@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+    <!-- Navbar -->
     <TheNavbar></TheNavbar>
-    <router-view/>
+    <router-view />
+    <!-- Footer -->
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import TheNavbar from '@/components/TheNavbar.vue'
+import Footer from '@/components/Footer.vue'
 export default {
   name: 'Home',
   components: {
-    TheNavbar
+    TheNavbar,
+    Footer
   },
   data () {
     return {

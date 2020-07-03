@@ -46,8 +46,6 @@
     </b-container>
     <!-- 常見問題 -->
 
-    <!-- Footer -->
-    <Footer></Footer>
   </div>
 </template>
 
@@ -57,15 +55,14 @@ import TheCarousel from '@/components/TheCarousel.vue'
 import TheCard from '@/components/TheCard.vue'
 import TheStory from '@/components/TheStory.vue'
 import TheBanner from '@/components/TheBanner.vue'
-import Footer from '@/components/Footer.vue'
+
 export default {
   name: 'Home',
   components: {
     TheCarousel,
     TheCard,
     TheStory,
-    TheBanner,
-    Footer
+    TheBanner
   },
   data () {
     return {
