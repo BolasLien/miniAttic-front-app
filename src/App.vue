@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
+    <TheNavbar></TheNavbar>
     <router-view/>
   </div>
 </template>
+
+<script>
+import TheNavbar from '@/components/TheNavbar.vue'
+export default {
+  name: 'Home',
+  components: {
+    TheNavbar
+  },
+  data () {
+    return {
+      storyText: '就說要換行 \n 還不換行'
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
