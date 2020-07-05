@@ -1,11 +1,29 @@
 <template>
   <div id="footer">
-    <div class="footer_content">
+    <b-container>
+      <div class="border"></div>
+    </b-container>
+    <b-container>
+      <div class="warp">
+        <!-- 網站地圖 -->
+        <div class="block">
 
-    </div>
-    <div class="footer_footer">
+        </div>
+        <!-- 常見問題 -->
+        <div class="block">
+
+        </div>
+        <!-- 關於我們 -->
+        <div class="block">
+
+        </div>
+        <!-- logo -->
+        <div class="block logo"></div>
+      </div>
+    </b-container>
+    <div class="copyright">
       <h5>小閣樓私嚐手作版權所有</h5>
-      <h6>Copyright © 2020 miniAttic. All rights reserved</h6>
+      <h6>Copyright © 2020 miniAttic All rights reserved</h6>
     </div>
   </div>
 </template>
@@ -16,8 +34,20 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.footer_footer
-  background: #000
-
+<style scoped>
+.copyright{
+  color: #b0a699;
+}
+.container:before, .container:after {
+    content: " ";
+    display: table;
+}
+hr, .border {
+    border: 0;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #eee;
+    margin: 1em auto;
+}
 </style>

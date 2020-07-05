@@ -2,8 +2,8 @@
   <div>
     <b-card
       overlay
-      img-src="https://picsum.photos/800/600/?image=3"
-      img-alt="Card Image"
+      :img-src="imgsrc"
+      img-alt="Image"
       text-variant="white"
       :title="title"
       :sub-title="subTitle"
@@ -19,7 +19,8 @@ export default {
   props: {
     title: String,
     subTitle: String,
-    text: String
+    text: String,
+    imgsrc: String
   }
 }
 </script>

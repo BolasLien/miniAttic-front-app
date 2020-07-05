@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed-banner-wrap">
+  <div class="fixed-banner-wrap mt-3 mb-3">
     <div class="container-fluid">
       <div class="row">
         <div class="wrap w-100">
