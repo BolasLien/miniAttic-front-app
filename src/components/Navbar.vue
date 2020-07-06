@@ -9,7 +9,7 @@
         </b-col>
         <b-col class="logo" cols="8">
           <a href="#">
-            <img width="100" src="../assets/logo.png" alt />
+            <router-link to="/"><img width="100" src="../assets/logo.png" alt /></router-link>
           </a>
         </b-col>
         <b-col class="login" cols="2">
@@ -28,8 +28,8 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#">關於我們</b-nav-item>
-            <b-nav-item href="#">最新消息</b-nav-item>
+            <b-nav-item href="#"><router-link to="About">關於我們</router-link></b-nav-item>
+            <b-nav-item href="#"><router-link to="News">最新消息</router-link></b-nav-item>
             <b-nav-item href="#">好評推薦</b-nav-item>
             <b-nav-item href="#">購買流程</b-nav-item>
             <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
@@ -75,7 +75,7 @@ export default {
   margin: 0 auto;
   border: 0;
   padding: 0;
-  position: fixed;
+  position: relative;
   top: 0;
   width: 100%;
   z-index: 99;
