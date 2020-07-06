@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Heading mt-5">
     <h4 class>{{title}}</h4>
     <h5>{{subtitle}}</h5>
   </div>
@@ -54,7 +54,7 @@ h5::after {
   display: block;
   width: 4em;
   height: 2px;
-  background: #aa1c20;
+  background: #555B6E;
   position: absolute;
   left: 0;
   right: 0;

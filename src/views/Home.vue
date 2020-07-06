@@ -48,7 +48,10 @@
         </b-col>
       </b-row>
     </b-container>
-    <!-- 常見問題 -->
+
+    <b-container class="mt-5 mb-5">
+      <h4>享在悠閒的午後陽光，享受自己的秘密時光</h4>
+    </b-container>
   </div>
 </template>
 

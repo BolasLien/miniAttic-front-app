@@ -36,7 +36,7 @@ export default {
 
 <style scoped>
 .copyright{
-  color: #b0a699;
+  color: #89B0AE;
 }
 .container:before, .container:after {
     content: " ";
@@ -47,7 +47,7 @@ hr, .border {
     display: block;
     height: 1px;
     width: 100%;
-    background-color: #eee;
+    background-color: #BEE3DB;
     margin: 1em auto;
 }
 </style>
