@@ -2,6 +2,7 @@
   <div id="app">
     <!-- Navbar -->
     <Navbar></Navbar>
+    <!-- views的頁面 -->
     <router-view />
     <!-- Footer -->
     <Footer></Footer>
