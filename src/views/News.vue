@@ -1,14 +1,14 @@
 <template>
   <div class="about">
-    <Heading title="關於我們" subtitle="About"></Heading>
-    <h1>This is an about page</h1>
+    <Heading title="最新消息" subtitle="News"></Heading>
+    <h1>This is an News page</h1>
   </div>
 </template>
 
 <script>
 import Heading from '@/components/Heading.vue'
 export default {
-  name: 'About',
+  name: 'News',
   data () {
     return {
       user: ''
