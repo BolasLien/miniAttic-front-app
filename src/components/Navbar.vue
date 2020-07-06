@@ -1,15 +1,19 @@
 <template>
   <div id="navbar">
     <!-- logo與登入登出 -->
-    <b-container fluid class="bg-dark">
+    <b-container fluid>
       <b-row class="justify-content-center align-items-center">
         <b-col class="links" cols="2">
-          <a href="#">ig </a>
+          <a href="#"><font-awesome-icon :icon="['fab','instagram']" size="2x"> </font-awesome-icon></a>
           <a href="#">| 聯絡我們 </a>
         </b-col>
         <b-col class="logo" cols="8">
           <a href="#">
-            <router-link to="/"><img width="100" src="../assets/logo.png" alt /></router-link>
+            <!-- <router-link to="/"><img width="100" src="../assets/logo.png" alt /></router-link> -->
+            <router-link to="/">
+            <h4>小閣樓</h4>
+            <h5>miniAttic</h5>
+            </router-link>
           </a>
         </b-col>
         <b-col class="login" cols="2">
@@ -21,7 +25,7 @@
     </b-container>
     <!-- Navigation -->
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar toggleable="lg" type="dark">
         <!-- <b-navbar-brand href="#">NavBar</b-navbar-brand> -->
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -30,8 +34,8 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item href="#"><router-link to="About">關於我們</router-link></b-nav-item>
             <b-nav-item href="#"><router-link to="News">最新消息</router-link></b-nav-item>
-            <b-nav-item href="#">好評推薦</b-nav-item>
-            <b-nav-item href="#">購買流程</b-nav-item>
+            <b-nav-item href="#"><router-link to="News">好評推薦</router-link></b-nav-item>
+            <b-nav-item href="#"><router-link to="Faq">購買流程</router-link></b-nav-item>
             <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
           </b-navbar-nav>
 
@@ -79,11 +83,18 @@ export default {
   top: 0;
   width: 100%;
   z-index: 99;
-  background: #ffffff;
+  background: #FAF9F9;
   transition: 0.3s linear box-shadow;
   box-shadow: 0 0 0em rgba(0, 0, 0, 0);
   border-bottom: 1px solid #eee;
-  color: darkred;
+}
+
+a{
+  color: #555B6E;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 </style>
