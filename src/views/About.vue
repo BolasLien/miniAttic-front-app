@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div id="about">
         <!-- 麵包屑 -->
 
     <b-container>
