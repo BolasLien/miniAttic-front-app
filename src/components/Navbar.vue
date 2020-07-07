@@ -20,12 +20,12 @@
         </b-col>
         <b-col class="login" cols="4">
           <a href="#">
-            註冊新會員
+            <span class="hidden-xs">註冊新會員</span>
             <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
           </a>
           <span>&ensp;|&ensp;</span>
           <a href="#">
-            會員登入
+            <span class="hidden-xs">會員登入</span>
             <font-awesome-icon :icon="['fas','sign-in-alt']" size="lg"></font-awesome-icon>
           </a>
           <span>&ensp;|&ensp;</span>
