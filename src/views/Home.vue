@@ -60,9 +60,19 @@
     </b-container>
 
     <!-- 品牌故事 -->
-    <b-container class="mt-3 mb-3">
+    <b-container class="mt-3 mb-3 story">
       <heading title="我們是誰" subtitle="Who am I"></heading>
-      <TheStory title="品牌故事" :text="storyText" imgsrc="https://picsum.photos/400/400/?image=1060"></TheStory>
+    <b-row no-gutters>
+      <b-col md="6" class="story-image">
+        <img src="https://picsum.photos/400/400/?image=1060">
+      </b-col>
+      <b-col md="6" class="story-description">
+        品牌故事
+        <br>
+        {{storyText}}
+      </b-col>
+    </b-row>
+      <!-- <TheStory title="品牌故事" :text="storyText" imgsrc="https://picsum.photos/400/400/?image=1060"></TheStory> -->
     </b-container>
 
     <!-- 中間Banner -->
@@ -113,7 +123,6 @@
 <script>
 // @ is an alias to /src
 import TheCarousel from '@/components/TheCarousel.vue'
-import TheStory from '@/components/TheStory.vue'
 import TheBanner from '@/components/TheBanner.vue'
 import Heading from '@/components/Heading.vue'
 import BannerBox from '@/components/BannerBox.vue'
@@ -122,7 +131,6 @@ export default {
   name: 'Home',
   components: {
     TheCarousel,
-    TheStory,
     TheBanner,
     Heading,
     BannerBox,
