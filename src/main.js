@@ -6,13 +6,16 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import './style/style.scss'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faShoppingCart, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 Vue.config.productionTip = false
 
-library.add(faInstagram)
+library.add(faInstagram, faShoppingCart, faUser, faSignInAlt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue)
