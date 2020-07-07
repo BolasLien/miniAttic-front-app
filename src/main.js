@@ -11,11 +11,11 @@ import './style/style.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faShoppingCart, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faUser, faSignInAlt, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 Vue.config.productionTip = false
 
-library.add(faInstagram, faShoppingCart, faUser, faSignInAlt)
+library.add(faInstagram, faShoppingCart, faUser, faSignInAlt, faPlus, faMinus)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue)
