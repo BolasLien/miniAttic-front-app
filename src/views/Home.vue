@@ -3,28 +3,69 @@
     <!-- 輪播圖 -->
     <TheCarousel></TheCarousel>
     <!-- 最新消息 -->
-    <b-container class="mt-3 mb-3">
-      <heading title="最新消息" subtitle="NEWS"></heading>
+    <b-container>
+      <heading title="小閣樓新鮮事" subtitle="NEWS"></heading>
       <b-row>
-        <b-col md="4">
-          <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=23"></TheCard>
+        <b-col md="4" sm="12" class="mt-3 mb-3">
+          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=23" text="熱熱吃更好吃"></BannerBox>
+          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=23"></TheCard> -->
         </b-col>
-        <b-col md="4">
-          <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=24"></TheCard>
+        <b-col md="4" sm="12" class="mt-3 mb-3">
+          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=30" text="熱熱吃更好吃"></BannerBox>
         </b-col>
-        <b-col md="4">
-          <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=25"></TheCard>
+        <b-col md="4" sm="12" class="mt-3 mb-3">
+          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=40" text="熱熱吃更好吃"></BannerBox>
+        </b-col>
+      </b-row>
+    </b-container>
+
+    <!-- 商品 -->
+    <b-container class="mt-3 mb-3">
+      <heading title="起點" subtitle="Brownie"></heading>
+      <b-row>
+        <b-col md="3" sm="6">
+          <LinkItem
+            linkTo="/products/brownie"
+            href="#"
+            bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
+            text="布朗尼 | 草莓"
+          ></LinkItem>
+          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=23"></TheCard> -->
+        </b-col>
+        <b-col md="3" sm="6">
+          <LinkItem
+          linkTo="/products/brownie"
+            href="#"
+            bgurl="http://220.128.133.15/s1090109/1594090298826.jpg"
+            text="布朗尼 | 牛奶"
+          ></LinkItem>
+        </b-col>
+        <b-col md="3" sm="6">
+          <LinkItem
+          linkTo="/products/brownie"
+            href="#"
+            bgurl="http://220.128.133.15/s1090109/1594090305154.jpg"
+            text="布朗尼 | 芥末"
+          ></LinkItem>
+        </b-col>
+        <b-col md="3" sm="6">
+          <LinkItem
+          linkTo="/products/brownie"
+            href="#"
+            bgurl="http://220.128.133.15/s1090109/1594090312145.jpg"
+            text="布朗尼 | 奶昔"
+          ></LinkItem>
         </b-col>
       </b-row>
     </b-container>
 
     <!-- 品牌故事 -->
     <b-container class="mt-3 mb-3">
-      <heading title="品牌故事" subtitle="STORY"></heading>
+      <heading title="我們是誰" subtitle="Who am I"></heading>
       <TheStory title="品牌故事" :text="storyText" imgsrc="https://picsum.photos/400/400/?image=1060"></TheStory>
     </b-container>
 
-        <!-- 中間Banner -->
+    <!-- 中間Banner -->
     <TheBanner
       title="對小閣樓的布朗尼有興趣嗎?"
       subtitle="點擊申請試吃"
@@ -34,17 +75,31 @@
     ></TheBanner>
 
     <!-- 好評推薦 -->
-    <b-container class="mt-3 mb-3">
+    <b-container>
       <heading title="好評推薦" subtitle="recommend"></heading>
       <b-row>
-        <b-col md="4" class="mb-2">
-          <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=5"></TheCard>
+        <b-col md="4" class="mt-3 mb-3">
+          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
+
+          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=5"></TheCard> -->
         </b-col>
-        <b-col md="4" class="mb-2">
-          <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=6"></TheCard>
+
+        <b-col md="4" class="mt-3 mb-3">
+          <BannerBox
+            href="#"
+            bgurl="https://picsum.photos/800/600/?image=42"
+            text="第一次吃的時候驚為天人!後來就一直回購了!"
+          ></BannerBox>
+          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=6"></TheCard> -->
         </b-col>
-        <b-col md="4" class="mb-2">
-          <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=7"></TheCard>
+        <b-col md="4" class="mt-3 mb-3">
+          <BannerBox
+            href="#"
+            bgurl="https://picsum.photos/800/600/?image=43"
+            text="咬下去的瞬間，巧克力的味道在口中擴散"
+          ></BannerBox>
+
+          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=7"></TheCard> -->
         </b-col>
       </b-row>
     </b-container>
@@ -58,23 +113,25 @@
 <script>
 // @ is an alias to /src
 import TheCarousel from '@/components/TheCarousel.vue'
-import TheCard from '@/components/TheCard.vue'
 import TheStory from '@/components/TheStory.vue'
 import TheBanner from '@/components/TheBanner.vue'
 import Heading from '@/components/Heading.vue'
-
+import BannerBox from '@/components/BannerBox.vue'
+import LinkItem from '@/components/LinkItem.vue'
 export default {
   name: 'Home',
   components: {
     TheCarousel,
-    TheCard,
     TheStory,
     TheBanner,
-    Heading
+    Heading,
+    BannerBox,
+    LinkItem
   },
   data () {
     return {
-      storyText: '就說要換行 \n 還不換行'
+      storyText:
+        'miniAttic是在「小閣樓」裡做甜點時誕生的品牌，透過手做的甜點傳達溫暖的祝福，希望每個品嘗過miniAttic甜點的人，能身處在一個悠閒的午後，窩在自己的秘密基地裡，一個人享受甜點的美好時光。'
     }
   }
 }
