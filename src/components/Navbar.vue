@@ -4,61 +4,56 @@
     <b-container>
       <b-row class="align-items-center">
         <b-col class="links" cols="4">
-          <a href="#">
+          <router-link to="/">
             <font-awesome-icon :icon="['fab','instagram']" size="lg"></font-awesome-icon>
-          </a>
+          </router-link>
           <span>&ensp;|&ensp;</span>
-          <a href="#">聯絡我們</a>
+          <router-link to="/">聯絡我們</router-link>
         </b-col>
         <b-col class="logo" cols="4">
-          <a href="#">
             <router-link to="/">
               <h1>小閣樓</h1>
               <h5>miniAttic</h5>
             </router-link>
-          </a>
         </b-col>
         <b-col class="login" cols="4">
-          <a href="#">
+          <router-link to="/">
             <span class="hidden-xs">註冊新會員</span>
             <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
-          </a>
+          </router-link>
           <span>&ensp;|&ensp;</span>
-          <a href="#">
+          <router-link to="/">
             <span class="hidden-xs">會員登入</span>
             <font-awesome-icon :icon="['fas','sign-in-alt']" size="lg"></font-awesome-icon>
-          </a>
+          </router-link>
           <span>&ensp;|&ensp;</span>
-          <a href="#">
+          <router-link to="/">
             <font-awesome-icon :icon="['fas','shopping-cart']" size="lg"></font-awesome-icon>
-          </a>
+          </router-link>
         </b-col>
       </b-row>
     </b-container>
     <!-- Navigation -->
     <div>
-      <b-navbar toggleable="lg">
-        <!-- <b-navbar-brand href="#">NavBar</b-navbar-brand> -->
-
+      <b-navbar toggleable="sm">
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#">
+            <b-nav-item>
               <router-link to="/About">關於我們</router-link>
             </b-nav-item>
-            <!-- <b-nav-item href="#"><router-link to="Products">各式甜點</router-link></b-nav-item> -->
 
             <b-nav-item-dropdown text="各式甜點">
-              <b-dropdown-item href="#"><router-link to="/Shop">布朗尼 BROWNIE</router-link></b-dropdown-item>
-              <b-dropdown-item href="#"><router-link to="/Shop">餅乾 COOKIE</router-link></b-dropdown-item>
-              <b-dropdown-item href="#"><router-link to="/Shop">下午茶 CAKE</router-link></b-dropdown-item>
+              <b-dropdown-item to="/Shop">布朗尼 BROWNIE</b-dropdown-item>
+              <b-dropdown-item to="/Shop">餅乾 COOKIE</b-dropdown-item>
+              <b-dropdown-item to="/Shop">下午茶 CAKE</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item href="#">
+            <b-nav-item>
               <router-link to="/News">最新消息</router-link>
             </b-nav-item>
-            <b-nav-item href="#">
+            <b-nav-item>
               <router-link to="/Faq">購買流程</router-link>
             </b-nav-item>
             <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
@@ -98,27 +93,3 @@ export default {
   name: 'Navbar'
 }
 </script>
-
-<style scoped>
-#navbar {
-  margin: 0 auto;
-  border: 0;
-  padding: 0;
-  position: relative;
-  top: 0;
-  width: 100%;
-  z-index: 99;
-  background: #faf9f9;
-  transition: 0.3s linear box-shadow;
-  box-shadow: 0 0 0em rgba(0, 0, 0, 0);
-  border-bottom: 1px solid #eee;
-}
-
-a {
-  color: #555b6e;
-}
-
-a:hover {
-  text-decoration: none;
-}
-</style>
