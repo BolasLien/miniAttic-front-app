@@ -13,12 +13,12 @@ export default {
   name: 'LinkItem',
   data () {
     return {
-      bg: 'background-image:url(' + this.bgurl + ')'
+      bg: 'background-image:url(' + this.src + ')'
     }
   },
   props: {
     to: String,
-    bgurl: String,
+    src: String,
     text: String
   }
 }
