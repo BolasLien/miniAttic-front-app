@@ -7,14 +7,14 @@
       <heading title="小閣樓新鮮事" subtitle="NEWS"></heading>
       <b-row>
         <b-col md="4" sm="12" class="mt-3 mb-3">
-          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=23" text="熱熱吃更好吃"></BannerBox>
+          <BannerBox to="/" bgurl="https://picsum.photos/800/600/?image=23" text="熱熱吃更好吃"></BannerBox>
           <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=23"></TheCard> -->
         </b-col>
         <b-col md="4" sm="12" class="mt-3 mb-3">
-          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=30" text="熱熱吃更好吃"></BannerBox>
+          <BannerBox to="/" bgurl="https://picsum.photos/800/600/?image=30" text="熱熱吃更好吃"></BannerBox>
         </b-col>
         <b-col md="4" sm="12" class="mt-3 mb-3">
-          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=40" text="熱熱吃更好吃"></BannerBox>
+          <BannerBox to="/" bgurl="https://picsum.photos/800/600/?image=40" text="熱熱吃更好吃"></BannerBox>
         </b-col>
       </b-row>
     </b-container>
@@ -25,8 +25,7 @@
       <b-row>
         <b-col md="3" sm="6">
           <LinkItem
-            linkTo="/products/brownie"
-            href="#"
+            to="/products/brownie"
             bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
             text="布朗尼 | 草莓"
           ></LinkItem>
@@ -34,24 +33,21 @@
         </b-col>
         <b-col md="3" sm="6">
           <LinkItem
-          linkTo="/products/brownie"
-            href="#"
+            to="/products/brownie"
             bgurl="http://220.128.133.15/s1090109/1594090298826.jpg"
             text="布朗尼 | 牛奶"
           ></LinkItem>
         </b-col>
         <b-col md="3" sm="6">
           <LinkItem
-          linkTo="/products/brownie"
-            href="#"
+            to="/products/brownie"
             bgurl="http://220.128.133.15/s1090109/1594090305154.jpg"
             text="布朗尼 | 芥末"
           ></LinkItem>
         </b-col>
         <b-col md="3" sm="6">
           <LinkItem
-          linkTo="/products/brownie"
-            href="#"
+            to="/products/brownie"
             bgurl="http://220.128.133.15/s1090109/1594090312145.jpg"
             text="布朗尼 | 奶昔"
           ></LinkItem>
@@ -62,16 +58,16 @@
     <!-- 品牌故事 -->
     <b-container class="mt-3 mb-3 story">
       <heading title="我們是誰" subtitle="Who am I"></heading>
-    <b-row no-gutters>
-      <b-col md="6" class="story-image">
-        <img src="https://picsum.photos/400/400/?image=1060">
-      </b-col>
-      <b-col md="6" class="story-description">
-        品牌故事
-        <br>
-        {{storyText}}
-      </b-col>
-    </b-row>
+      <b-row no-gutters>
+        <b-col md="6" class="story-image">
+          <img src="https://picsum.photos/400/400/?image=1060" />
+        </b-col>
+        <b-col md="6" class="story-description">
+          品牌故事
+          <br />
+          {{storyText}}
+        </b-col>
+      </b-row>
       <!-- <TheStory title="品牌故事" :text="storyText" imgsrc="https://picsum.photos/400/400/?image=1060"></TheStory> -->
     </b-container>
 
@@ -80,7 +76,7 @@
       title="對小閣樓的布朗尼有興趣嗎?"
       subtitle="點擊申請試吃"
       buttontext="立即品嘗"
-      url="#"
+      to="/"
       bgurl="https://picsum.photos/1920/1080/?image=395"
     ></TheBanner>
 
@@ -89,14 +85,14 @@
       <heading title="好評推薦" subtitle="recommend"></heading>
       <b-row>
         <b-col md="4" class="mt-3 mb-3">
-          <BannerBox href="#" bgurl="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
+          <BannerBox to="/" bgurl="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
 
           <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=5"></TheCard> -->
         </b-col>
 
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox
-            href="#"
+            to="/"
             bgurl="https://picsum.photos/800/600/?image=42"
             text="第一次吃的時候驚為天人!後來就一直回購了!"
           ></BannerBox>
@@ -104,7 +100,7 @@
         </b-col>
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox
-            href="#"
+            to="/"
             bgurl="https://picsum.photos/800/600/?image=43"
             text="咬下去的瞬間，巧克力的味道在口中擴散"
           ></BannerBox>

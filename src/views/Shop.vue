@@ -1,7 +1,6 @@
 <template>
   <div id="shop">
     <!-- 麵包屑 -->
-
     <b-container>
       <b-breadcrumb>
         <b-breadcrumb-item href="/">
@@ -12,6 +11,7 @@
         </b-breadcrumb-item>
       </b-breadcrumb>
     </b-container>
+
     <div class="shop-box">
       <b-container>
         <b-row>
@@ -32,48 +32,11 @@
             <h1 class="head">各式甜點</h1>
             <b-row class="ml-n1 mr-n1">
               <b-col lg="3" sm="6">
-                <LinkItem
-                  linkTo="/products/brownie"
-                  href="#"
-                  bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
-                  text="布朗尼 | 草莓"
-                ></LinkItem>
-                <div class="price">
-                  <small>NT$</small>
-                  480
-                </div>
-              </b-col>
-              <b-col lg="3" sm="6">
-                <LinkItem
-                  linkTo="/products/brownie"
-                  href="#"
-                  bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
-                  text="布朗尼 | 草莓"
-                ></LinkItem>
-                <div class="price">
-                  <small>NT$</small>
-                  480
-                </div>
-              </b-col>
-              <b-col lg="3" sm="6">
-                <LinkItem
-                  linkTo="/products/brownie"
-                  href="#"
-                  bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
-                  text="布朗尼 | 草莓"
-                ></LinkItem>
-                <div class="price">
-                  <small>NT$</small>
-                  480
-                </div>
-              </b-col>
-              <b-col lg="3" sm="6">
-                <LinkItem
-                  linkTo="/products/brownie"
-                  href="#"
-                  bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
-                  text="布朗尼 | 草莓"
-                ></LinkItem>
+          <LinkItem
+            to="/products/brownie"
+            bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
+            text="布朗尼 | 草莓"
+          ></LinkItem>
                 <div class="price">
                   <small>NT$</small>
                   480
