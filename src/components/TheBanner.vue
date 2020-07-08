@@ -27,11 +27,11 @@ export default {
     subtitle: String,
     buttontext: String,
     to: String,
-    bgurl: String
+    src: String
   },
   data () {
     return {
-      bg: `background-image:url(${this.bgurl});`
+      bg: `background-image:url(${this.src});`
     }
   }
 }

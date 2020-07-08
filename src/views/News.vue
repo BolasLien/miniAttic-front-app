@@ -14,7 +14,7 @@
     <b-container>
       <b-row>
         <b-col lg="6" sm="12">
-          <BannerBox text="you know!" bgurl="https://picsum.photos/800/600/?image=20" to="/"></BannerBox>
+          <BannerBox text="you know!" src="https://picsum.photos/800/600/?image=20" to="/"></BannerBox>
         </b-col>
         <b-col lg="6" sm="12" class="text-left">
           <h6>最新消息</h6>

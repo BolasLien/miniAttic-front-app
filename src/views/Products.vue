@@ -88,7 +88,7 @@
         <b-col sm="6" lg="3">
                     <LinkItem
             to="/products/brownie"
-            bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
+            src="http://220.128.133.15/s1090109/1594090276038.jpg"
             text="布朗尼 | 草莓"
           ></LinkItem>
                 <div class="price">
@@ -99,7 +99,7 @@
         <b-col sm="6" lg="3">
                     <LinkItem
             to="/products/brownie"
-            bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
+            src="http://220.128.133.15/s1090109/1594090276038.jpg"
             text="布朗尼 | 草莓"
           ></LinkItem>
                 <div class="price">
@@ -110,7 +110,7 @@
         <b-col sm="6" lg="3">
                     <LinkItem
             to="/products/brownie"
-            bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
+            src="http://220.128.133.15/s1090109/1594090276038.jpg"
             text="布朗尼 | 草莓"
           ></LinkItem>
                 <div class="price">
@@ -121,7 +121,7 @@
         <b-col sm="6" lg="3">
                     <LinkItem
             to="/products/brownie"
-            bgurl="http://220.128.133.15/s1090109/1594090276038.jpg"
+            src="http://220.128.133.15/s1090109/1594090276038.jpg"
             text="布朗尼 | 草莓"
           ></LinkItem>
                 <div class="price">
