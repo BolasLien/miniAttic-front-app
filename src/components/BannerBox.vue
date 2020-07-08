@@ -1,11 +1,9 @@
 <template>
   <div class="banner-box">
-    <a :href="href" class="cover">
-      <div class="bg" :style="bg">
-
-      </div>
+    <router-link class="cover" :to="to">
+      <div class="bg" :style="bg"></div>
       <h5>{{ text }}</h5>
-    </a>
+    </router-link>
   </div>
 </template>
 
@@ -18,7 +16,7 @@ export default {
     }
   },
   props: {
-    href: String,
+    to: String,
     bgurl: String,
     text: String
   }

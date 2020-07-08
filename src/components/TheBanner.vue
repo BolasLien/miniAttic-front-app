@@ -6,7 +6,8 @@
           <hgroup class="title-box">
             <h4 class>{{title}}</h4>
             <h5>{{subtitle}}</h5>
-            <a :href="url" title="CLASSIC">{{buttontext}}</a>
+            <router-link :to="to">{{buttontext}}</router-link>
+            <!-- <a :href="url" title="CLASSIC"></a> -->
           </hgroup>
           <div
             class="bg-item"
@@ -25,7 +26,7 @@ export default {
     title: String,
     subtitle: String,
     buttontext: String,
-    url: String,
+    to: String,
     bgurl: String
   },
   data () {
