@@ -154,36 +154,36 @@ export default {
       sliding: null,
       carousels: [
         {
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/carousel-item-1.jpg',
+          src: process.env.VUE_APP_API + '/img/carousel-item-1',
           to: '/'
         },
         {
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/carousel-item-2.jpg',
+          src: process.env.VUE_APP_API + '/img/carousel-item-2',
           to: '/'
         },
         {
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/carousel-item-3.jpg',
+          src: process.env.VUE_APP_API + '/img/carousel-item-3',
           to: '/'
         },
         {
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/carousel-item-4.jpg',
+          src: process.env.VUE_APP_API + '/img/carousel-item-4',
           to: '/'
         }
       ],
       intros: [
         {
           to: '/',
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/index-intro-1.jpg',
+          src: process.env.VUE_APP_API + '/img/intro-item-1',
           text: 'intro1'
         },
         {
           to: '/',
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/index-intro-2.jpg',
+          src: process.env.VUE_APP_API + '/img/intro-item-2',
           text: 'intro2'
         },
         {
           to: '/',
-          src: process.env.VUE_APP_ASSETS_HOST + '/img/index-intro-3.jpg',
+          src: process.env.VUE_APP_API + '/img/intro-item-3',
           text: 'intro3'
         }
       ],
