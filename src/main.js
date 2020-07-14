@@ -13,6 +13,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faShoppingCart, faUser, faSignInAlt, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+axios.defaults.withCredentials = true
+Vue.use(VueAxios, axios)
+
 Vue.config.productionTip = false
 
 library.add(faInstagram, faShoppingCart, faUser, faSignInAlt, faPlus, faMinus)
