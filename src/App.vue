@@ -3,7 +3,7 @@
     <!-- Navbar -->
     <Navbar></Navbar>
     <!-- views的頁面 -->
-    <router-view />
+    <router-view v-if="isRouterAlive" :datas="datas" />
     <!-- Footer -->
     <Footer></Footer>
   </div>
@@ -20,8 +20,27 @@ export default {
   },
   data () {
     return {
-      storyText: '就說要換行 \n 還不換行'
+      isRouterAlive: true,
+      datas: []
     }
+  },
+  methods: {
+    reload () {
+      this.isRouterAlive = false
+      this.$nextTick(() => {
+        this.isRouterAlive = true
+      })
+    }
+  },
+  mounted () {
+    this.axios.get(process.env.VUE_APP_API + '/pages')
+      .then(response => {
+        this.datas = response.data.datas
+        this.reload()
+      })
+      .catch(error => {
+        console.log(error.response.data.message)
+      })
   }
 }
 </script>
