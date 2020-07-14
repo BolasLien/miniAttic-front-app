@@ -25,7 +25,7 @@
 
     <!-- 最新消息 -->
     <b-container>
-      <heading title="小閣樓新鮮事" subtitle="NEWS"></heading>
+      <Heading :title="introTitle.title" :subtitle="introTitle.subtitle"></Heading>
       <b-row>
         <b-col v-for="(item, index) in intros" :key="index" :md="12/intros.length" sm="12" class="mt-3 mb-3" >
           <BannerBox
@@ -39,7 +39,7 @@
 
     <!-- 商品 -->
     <b-container class="mt-3 mb-3">
-      <heading title="小閣樓布朗尼" subtitle="Brownie"></heading>
+      <heading :title="miniproductsTitle.title" :subtitle="miniproductsTitle.subtitle"></heading>
       <b-row>
         <b-col md="3" sm="6">
           <LinkItem
@@ -75,7 +75,7 @@
 
     <!-- 品牌故事 -->
     <b-container class="mt-3 mb-3 story">
-      <heading :title="miniaboutTitle.title" :subtitle="miniaboutTitle.subtitle"></heading>
+      <Heading :title="miniaboutTitle.title" :subtitle="miniaboutTitle.subtitle"></Heading>
       <b-row no-gutters v-for="(item,index) in miniabouts" :key="index">
         <b-col md="6" class="story-image">
           <img :src="item.src" />
@@ -84,28 +84,24 @@
           <p class="mr-3 ml-3">{{item.description}}</p>
         </b-col>
       </b-row>
-      <!-- <TheStory title="品牌故事" :text="storyText" imgsrc="https://picsum.photos/400/400/?image=1060"></TheStory> -->
     </b-container>
 
     <!-- 中間Banner -->
     <TheBanner
-      title="對小閣樓的布朗尼有興趣嗎?"
-      subtitle="點擊申請試吃"
-      buttontext="立即品嘗"
-      to="/"
-      src="https://picsum.photos/1920/1080/?image=395"
+      :title="callToAction.title"
+      :subtitle="callToAction.subtitle"
+      :buttontext="callToAction.description"
+      :to="callToAction.link"
+      :src="callToAction.src"
     ></TheBanner>
 
     <!-- 好評推薦 -->
-        <!--
     <b-container>
-      <heading title="好評推薦" subtitle="recommend"></heading>
+      <Heading :title="minirecommendTitle.title" :subtitle="minirecommendTitle.subtitle"></Heading>
       <b-row>
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox to="/" src="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
-
         </b-col>
-
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox
             to="/"
@@ -122,10 +118,10 @@
 
         </b-col>
       </b-row>
-    </b-container>-->
+    </b-container>
 
     <b-container class="mt-5 mb-5">
-      <h4>享在悠閒的午後陽光，享受自己的秘密時光</h4>
+      <h4>{{minifooter.description}}</h4>
     </b-container>
   </div>
 </template>
@@ -151,12 +147,16 @@ export default {
     return {
       slide: 0,
       sliding: null,
-      carousels: this.datas.filter(item => item.area === 'carousel' && item.show),
-      intros: this.datas.filter(item => item.area === 'intro' && item.show),
-      miniaboutTitle: this.datas.filter(item => item.area === 'miniabout' && item.item === 'title')[0],
-      miniabouts: this.datas.filter(item => item.area === 'miniabout' && item.show && item.item !== 'title'),
-      storyText:
-        'miniAttic是在「小閣樓」裡做甜點時誕生的品牌，透過手做的甜點傳達溫暖的祝福，希望每個品嘗過miniAttic甜點的人，能身處在一個悠閒的午後，窩在自己的秘密基地裡，一個人享受甜點的美好時光。'
+      carousels: this.datas.filter(e => e.area === 'carousel' && e.show && e.item !== 'title'),
+      introTitle: this.datas.filter(e => e.area === 'intro' && e.show && e.item === 'title')[0],
+      intros: this.datas.filter(e => e.area === 'intro' && e.show && e.item !== 'title'),
+      miniproductsTitle: this.datas.filter(e => e.area === 'miniproducts' && e.show && e.item === 'title')[0],
+      miniaboutTitle: this.datas.filter(e => e.area === 'miniabout' && e.show && e.item === 'title')[0],
+      miniabouts: this.datas.filter(e => e.area === 'miniabout' && e.show && e.item !== 'title'),
+      callToAction: this.datas.filter(e => e.area === 'calltoaction' && e.show && e.item !== 'title')[0],
+      minirecommendTitle: this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item === 'title')[0],
+      minirecommends: this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item !== 'title')[0],
+      minifooter: this.datas.filter(e => e.area === 'minifooter' && e.show && e.item !== 'title')[0]
     }
   },
   methods: {
