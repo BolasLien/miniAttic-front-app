@@ -76,14 +76,12 @@
     <!-- 品牌故事 -->
     <b-container class="mt-3 mb-3 story">
       <heading title="我們是誰" subtitle="Who am I"></heading>
-      <b-row no-gutters>
+      <b-row no-gutters v-for="(item,index) in miniabouts" :key="index">
         <b-col md="6" class="story-image">
-          <img src="https://picsum.photos/400/400/?image=1060" />
+          <img :src="item.src" />
         </b-col>
         <b-col md="6" class="story-description">
-          品牌故事
-          <br />
-          {{storyText}}
+          <p class="mr-3 ml-3">{{item.description}}</p>
         </b-col>
       </b-row>
       <!-- <TheStory title="品牌故事" :text="storyText" imgsrc="https://picsum.photos/400/400/?image=1060"></TheStory> -->
@@ -155,6 +153,7 @@ export default {
       sliding: null,
       carousels: this.datas.filter(item => item.area === 'carousel' && item.show),
       intros: this.datas.filter(item => item.area === 'intro' && item.show),
+      miniabouts: this.datas.filter(item => item.area === 'miniabout' && item.show),
       storyText:
         'miniAttic是在「小閣樓」裡做甜點時誕生的品牌，透過手做的甜點傳達溫暖的祝福，希望每個品嘗過miniAttic甜點的人，能身處在一個悠閒的午後，窩在自己的秘密基地裡，一個人享受甜點的美好時光。'
     }
