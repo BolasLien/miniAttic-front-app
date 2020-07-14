@@ -16,9 +16,9 @@
     >
       <!-- Slides with image only -->
       <b-carousel-slide
-      v-for="(carousel,index) in carousels"
+      v-for="(item,index) in carousels"
       :key="index"
-      :img-src="carousel.src"
+      :img-src="item.src"
       >
       </b-carousel-slide>
     </b-carousel>
@@ -27,11 +27,11 @@
     <b-container>
       <heading title="小閣樓新鮮事" subtitle="NEWS"></heading>
       <b-row>
-        <b-col v-for="(intro, index) in intros" :key="index" :md="12/intros.length" sm="12" class="mt-3 mb-3" >
+        <b-col v-for="(item, index) in intros" :key="index" :md="12/intros.length" sm="12" class="mt-3 mb-3" >
           <BannerBox
-            :to="intro.to"
-            :src="intro.src"
-            :text="intro.text"
+            :to="item.link"
+            :src="item.src"
+            :text="item.description"
             ></BannerBox>
         </b-col>
       </b-row>
@@ -99,13 +99,13 @@
     ></TheBanner>
 
     <!-- 好評推薦 -->
+        <!--
     <b-container>
       <heading title="好評推薦" subtitle="recommend"></heading>
       <b-row>
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox to="/" src="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
 
-          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=5"></TheCard> -->
         </b-col>
 
         <b-col md="4" class="mt-3 mb-3">
@@ -114,7 +114,6 @@
             src="https://picsum.photos/800/600/?image=42"
             text="第一次吃的時候驚為天人!後來就一直回購了!"
           ></BannerBox>
-          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=6"></TheCard> -->
         </b-col>
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox
@@ -123,10 +122,9 @@
             text="咬下去的瞬間，巧克力的味道在口中擴散"
           ></BannerBox>
 
-          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/400/300/?image=7"></TheCard> -->
         </b-col>
       </b-row>
-    </b-container>
+    </b-container>-->
 
     <b-container class="mt-5 mb-5">
       <h4>享在悠閒的午後陽光，享受自己的秘密時光</h4>
@@ -141,6 +139,9 @@ import Heading from '@/components/Heading.vue'
 import BannerBox from '@/components/BannerBox.vue'
 import LinkItem from '@/components/LinkItem.vue'
 export default {
+  props: {
+    datas: Array
+  },
   name: 'Home',
   components: {
     TheBanner,
@@ -152,41 +153,8 @@ export default {
     return {
       slide: 0,
       sliding: null,
-      carousels: [
-        {
-          src: process.env.VUE_APP_API + '/img/carousel-item-1',
-          to: '/'
-        },
-        {
-          src: process.env.VUE_APP_API + '/img/carousel-item-2',
-          to: '/'
-        },
-        {
-          src: process.env.VUE_APP_API + '/img/carousel-item-3',
-          to: '/'
-        },
-        {
-          src: process.env.VUE_APP_API + '/img/carousel-item-4',
-          to: '/'
-        }
-      ],
-      intros: [
-        {
-          to: '/',
-          src: process.env.VUE_APP_API + '/img/intro-item-1',
-          text: 'intro1'
-        },
-        {
-          to: '/',
-          src: process.env.VUE_APP_API + '/img/intro-item-2',
-          text: 'intro2'
-        },
-        {
-          to: '/',
-          src: process.env.VUE_APP_API + '/img/intro-item-3',
-          text: 'intro3'
-        }
-      ],
+      carousels: this.datas.filter(item => item.area === 'carousel' && item.show),
+      intros: this.datas.filter(item => item.area === 'intro' && item.show),
       storyText:
         'miniAttic是在「小閣樓」裡做甜點時誕生的品牌，透過手做的甜點傳達溫暖的祝福，希望每個品嘗過miniAttic甜點的人，能身處在一個悠閒的午後，窩在自己的秘密基地裡，一個人享受甜點的美好時光。'
     }
