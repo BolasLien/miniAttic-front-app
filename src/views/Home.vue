@@ -47,7 +47,6 @@
             src="http://220.128.133.15/s1090109/1594090276038.jpg"
             text="布朗尼 | 草莓"
           ></LinkItem>
-          <!-- <TheCard text="Card Content in Here" title="Title" subTitle="subTitle" imgsrc="https://picsum.photos/800/600/?image=23"></TheCard> -->
         </b-col>
         <b-col md="3" sm="6">
           <LinkItem
