@@ -5,10 +5,12 @@
       <b-row class="align-items-center">
         <b-col class="links" cols="4">
           <router-link to="/">
-            <font-awesome-icon :icon="['fab','instagram']" size="lg"></font-awesome-icon>
+            <font-awesome-icon to="/" :icon="['fab','instagram']" size="lg"></font-awesome-icon>
           </router-link>
           <span>&ensp;|&ensp;</span>
-          <router-link to="/">聯絡我們</router-link>
+                    <router-link to="/">
+            <font-awesome-icon to="/" :icon="['fab','facebook-square']" size="lg"></font-awesome-icon>
+          </router-link>
         </b-col>
         <b-col class="logo" cols="4">
           <router-link to="/">
@@ -18,17 +20,18 @@
         </b-col>
         <b-col class="login" cols="4">
           <router-link to="/">
-            <span class="hidden-xs">註冊新會員</span>
             <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
+            <span class="hidden-xs">註冊</span>
           </router-link>
           <span>&ensp;|&ensp;</span>
           <router-link to="/">
-            <span class="hidden-xs">會員登入</span>
             <font-awesome-icon :icon="['fas','sign-in-alt']" size="lg"></font-awesome-icon>
+            <span class="hidden-xs">登入</span>
           </router-link>
           <span>&ensp;|&ensp;</span>
           <router-link to="/">
             <font-awesome-icon :icon="['fas','shopping-cart']" size="lg"></font-awesome-icon>
+            <span class="hidden-xs">購物車</span>
           </router-link>
         </b-col>
       </b-row>
