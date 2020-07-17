@@ -31,15 +31,15 @@
           <b-col sm="9" md="10">
             <h1 class="head">各式甜點</h1>
             <b-row class="ml-n1 mr-n1">
-              <b-col lg="3" sm="6">
+              <b-col lg="3" sm="6" v-for="(data,index) in products" :key="index">
           <LinkItem
-            to="/products/brownie"
-            src="http://220.128.133.15/s1090109/1594090276038.jpg"
-            text="布朗尼 | 草莓"
+            :to="'/products/' + data.item"
+            :src="data.src"
+            :text="data.name"
           ></LinkItem>
                 <div class="price">
-                  <small>NT$</small>
-                  480
+                  <small>NT$&ensp;</small>
+                  {{data.price}}
                 </div>
               </b-col>
 
@@ -55,8 +55,8 @@
 import LinkItem from '@/components/LinkItem.vue'
 export default {
   name: 'Shop',
-  data () {
-    return {}
+  props: {
+    products: Array
   },
   components: {
     LinkItem

@@ -10,7 +10,7 @@
           <router-link to="/Shop">各式甜點</router-link>
         </b-breadcrumb-item>
         <b-breadcrumb-item>
-          <router-link :to="$route.params.id">{{ $route.params.id}}</router-link>
+          <router-link :to="$route.params.id">{{ data.name }}</router-link>
         </b-breadcrumb-item>
       </b-breadcrumb>
     </b-container>
@@ -19,14 +19,14 @@
     <b-container>
       <b-row>
         <b-col md="6" sm="7" class="item-image">
-          <img src="http://220.128.133.15/s1090109/1594090276038.jpg" />
+          <img :src="data.src" />
         </b-col>
         <b-col md="6" sm="5" class="item-description">
-          <h3 class="mt-3">{{$route.params.id}}這裡是商品名稱</h3>
-          <h4>{{$route.params.id}} 這裡是副標</h4>
-          <p>miniAttic是在「小閣樓」裡做甜點時誕生的品牌，透過手做的甜點傳達溫暖的祝福，希望每個品嘗過miniAttic甜點的人，能身處在一個悠閒的午後，窩在自己的秘密基地裡，一個人享受甜點的美好時光。</p>
+          <h3 class="mt-3">{{data.name}}</h3>
+          <h4>{{data.subheading}}</h4>
+          <p>{{data.intro}}</p>
           <div class="price">
-            <small>NT$</small>480
+            <small>NT$&ensp;</small>{{data.price}}
           </div>
           <!-- 這裡要放數量的控制元件 -->
           <div class="quantity">
@@ -47,7 +47,8 @@
     <b-container class="mt-5 mb-5">
       <b-tabs content-class="mt-3" justified>
         <b-tab title="商品介紹" active>
-          <img src="https://picsum.photos/1280/450/?random=1" />
+          {{data.description}}
+          <!-- <img src="https://picsum.photos/1280/450/?random=1" />
           <p>這裡是內容介紹區塊，要找透過後臺可以編輯標籤的工具</p>
           <h4>【精緻-草莓優格巧克力布朗尼】</h4>
           <p>
@@ -55,7 +56,7 @@
             淋上酸甜滋味的草莓巧克力與優格巧克力
             藝術般的交融形式，中間再放置草莓乾點綴精緻感
           </p>
-          <h5>成分：草莓巧克力、優格巧克力、比利時巧克力、可可粉、蛋、奶油、糖、麵粉</h5>
+          <h5>成分：草莓巧克力、優格巧克力、比利時巧克力、可可粉、蛋、奶油、糖、麵粉</h5> -->
         </b-tab>
 
         <b-tab title="付款及運送方式">
@@ -138,15 +139,35 @@
 import Heading from '@/components/Heading.vue'
 import LinkItem from '@/components/LinkItem.vue'
 export default {
-  name: 'About',
+  props: {
+    products: Array
+  },
+  name: 'Products',
   data () {
     return {
-      quantity: 1
+      quantity: 1,
+      data: {
+        item: '',
+        src: '',
+        class: '',
+        name: '',
+        subheading: '',
+        intro: '',
+        price: '',
+        description: ''
+      }
     }
   },
   components: {
     Heading,
     LinkItem
+  },
+  mounted () {
+    this.data = this.products.filter(e => e.item === this.$route.params.id)[0]
+    if (this.data === undefined) {
+      this.$router.push('/NotFound')
+      console.log('aasdasdasd')
+    }
   }
 }
 </script>

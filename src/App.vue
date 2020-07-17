@@ -3,7 +3,7 @@
     <!-- Navbar -->
     <Navbar></Navbar>
     <!-- views的頁面 -->
-    <router-view v-if="isRouterAlive" :datas="datas" />
+    <router-view v-if="isRouterAlive" :datas="datas" :products="products" />
     <!-- Footer -->
     <Footer></Footer>
   </div>
@@ -21,7 +21,8 @@ export default {
   data () {
     return {
       isRouterAlive: true,
-      datas: []
+      datas: [],
+      products: []
     }
   },
   methods: {
@@ -36,6 +37,14 @@ export default {
     this.axios.get(process.env.VUE_APP_API + '/pages')
       .then(response => {
         this.datas = response.data.datas
+        this.reload()
+      })
+      .catch(error => {
+        console.log(error.response.data.message)
+      })
+    this.axios.get(process.env.VUE_APP_API + '/products')
+      .then(response => {
+        this.products = response.data.datas
         this.reload()
       })
       .catch(error => {
