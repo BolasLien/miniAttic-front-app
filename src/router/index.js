@@ -36,6 +36,14 @@ const routes = [
   {
     path: '/products/:id',
     component: () => import(/* webpackChunkName: "products/:id" */ '../views/Products.vue')
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "notfound" */ '../views/NotFound.vue'),
+    meta: {
+      title: '找不到頁面 | 404'
+    }
   }
 ]
 
