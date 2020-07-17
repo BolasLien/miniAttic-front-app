@@ -145,17 +145,17 @@ export default {
   data () {
     return {
       slide: 0,
-      sliding: null,
-      carousels: this.datas.filter(e => e.area === 'carousel' && e.show && e.item !== 'title'),
-      introTitle: this.datas.filter(e => e.area === 'intro' && e.show && e.item === 'title')[0],
-      intros: this.datas.filter(e => e.area === 'intro' && e.show && e.item !== 'title'),
-      miniproductsTitle: this.datas.filter(e => e.area === 'miniproducts' && e.show && e.item === 'title')[0],
-      miniaboutTitle: this.datas.filter(e => e.area === 'miniabout' && e.show && e.item === 'title')[0],
-      miniabouts: this.datas.filter(e => e.area === 'miniabout' && e.show && e.item !== 'title'),
-      callToAction: this.datas.filter(e => e.area === 'calltoaction' && e.show && e.item !== 'title')[0],
-      minirecommendTitle: this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item === 'title')[0],
-      minirecommends: this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item !== 'title')[0],
-      minifooter: this.datas.filter(e => e.area === 'minifooter' && e.show && e.item !== 'title')[0]
+      sliding: null
+      // carousels: this.datas.filter(e => e.area === 'carousel' && e.show && e.item !== 'title'),
+      // introTitle: this.datas.filter(e => e.area === 'intro' && e.show && e.item === 'title')[0],
+      // intros: this.datas.filter(e => e.area === 'intro' && e.show && e.item !== 'title'),
+      // miniproductsTitle: this.datas.filter(e => e.area === 'miniproducts' && e.show && e.item === 'title')[0],
+      // miniaboutTitle: this.datas.filter(e => e.area === 'miniabout' && e.show && e.item === 'title')[0],
+      // miniabouts: this.datas.filter(e => e.area === 'miniabout' && e.show && e.item !== 'title'),
+      // callToAction: this.datas.filter(e => e.area === 'calltoaction' && e.show && e.item !== 'title')[0],
+      // minirecommendTitle: this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item === 'title')[0],
+      // minirecommends: this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item !== 'title')[0],
+      // minifooter: this.datas.filter(e => e.area === 'minifooter' && e.show && e.item !== 'title')[0]
     }
   },
   methods: {
@@ -165,6 +165,41 @@ export default {
     onSlideEnd (slide) {
       this.sliding = false
     }
+  },
+  computed: {
+    carousels () {
+      return this.datas.filter(e => e.area === 'carousel' && e.show && e.item !== 'title')
+    },
+    introTitle () {
+      return this.datas.filter(e => e.area === 'intro' && e.show && e.item === 'title')[0]
+    },
+    intros () {
+      return this.datas.filter(e => e.area === 'intro' && e.show && e.item !== 'title')
+    },
+    miniproductsTitle () {
+      return this.datas.filter(e => e.area === 'miniproducts' && e.show && e.item === 'title')[0]
+    },
+    miniaboutTitle () {
+      return this.datas.filter(e => e.area === 'miniabout' && e.show && e.item === 'title')[0]
+    },
+    miniabouts () {
+      return this.datas.filter(e => e.area === 'miniabout' && e.show && e.item !== 'title')
+    },
+    callToAction () {
+      return this.datas.filter(e => e.area === 'calltoaction' && e.show && e.item !== 'title')[0]
+    },
+    minirecommendTitle () {
+      return this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item === 'title')[0]
+    },
+    minirecommends () {
+      return this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item !== 'title')[0]
+    },
+    minifooter () {
+      return this.datas.filter(e => e.area === 'minifooter' && e.show && e.item !== 'title')[0]
+    }
+  },
+  mounted () {
+    console.log('Test' + this.introTitle)
   }
 }
 </script>
