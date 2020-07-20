@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="home" v-if="isLoading">
     <!-- 輪播圖 -->
     <b-carousel
       id="carousel-1"
@@ -25,13 +25,13 @@
 
     <!-- 最新消息 -->
     <b-container>
-      <Heading :title="introTitle.title" :subtitle="introTitle.subtitle"></Heading>
+      <Heading :title="introTitle.description1" :subtitle="introTitle.description2"></Heading>
       <b-row>
         <b-col v-for="(item, index) in intros" :key="index" :md="12/intros.length" sm="12" class="mt-3 mb-3" >
           <BannerBox
             :to="item.link"
             :src="item.src"
-            :text="item.description"
+            :text="item.description1"
             ></BannerBox>
         </b-col>
       </b-row>
@@ -39,7 +39,7 @@
 
     <!-- 商品 -->
     <b-container class="mt-3 mb-3">
-      <heading :title="miniproductsTitle.title" :subtitle="miniproductsTitle.subtitle"></heading>
+      <heading :title="miniproductsTitle.description1" :subtitle="miniproductsTitle.description2"></heading>
       <b-row>
         <b-col md="3" sm="6">
           <LinkItem
@@ -74,29 +74,29 @@
 
     <!-- 品牌故事 -->
     <b-container class="mt-3 mb-3 story">
-      <Heading :title="miniaboutTitle.title" :subtitle="miniaboutTitle.subtitle"></Heading>
+      <Heading :title="miniaboutTitle.description1" :subtitle="miniaboutTitle.description2"></Heading>
       <b-row no-gutters v-for="(item,index) in miniabouts" :key="index">
         <b-col md="6" class="story-image">
           <img :src="item.src" />
         </b-col>
         <b-col md="6" class="story-description">
-          <p class="mr-3 ml-3">{{item.description}}</p>
+          <p class="mr-3 ml-3">{{item.description1}}</p>
         </b-col>
       </b-row>
     </b-container>
 
     <!-- 中間Banner -->
     <TheBanner
-      :title="callToAction.title"
-      :subtitle="callToAction.subtitle"
-      :buttontext="callToAction.description"
+      :title="callToAction.description1"
+      :subtitle="callToAction.description2"
+      :buttontext="callToAction.description3"
       :to="callToAction.link"
       :src="callToAction.src"
     ></TheBanner>
 
     <!-- 好評推薦 -->
     <b-container>
-      <Heading :title="minirecommendTitle.title" :subtitle="minirecommendTitle.subtitle"></Heading>
+      <Heading :title="minirecommendTitle.description1" :subtitle="minirecommendTitle.description2"></Heading>
       <b-row>
         <b-col md="4" class="mt-3 mb-3">
           <BannerBox to="/" src="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
@@ -120,7 +120,7 @@
     </b-container>
 
     <b-container class="mt-5 mb-5">
-      <h4>{{minifooter.description}}</h4>
+      <h4>{{minifooter.description1}}</h4>
     </b-container>
   </div>
 </template>
@@ -133,7 +133,7 @@ import BannerBox from '@/components/BannerBox.vue'
 import LinkItem from '@/components/LinkItem.vue'
 export default {
   props: {
-    datas: Array
+    webdata: Object
   },
   name: 'Home',
   components: {
@@ -145,7 +145,9 @@ export default {
   data () {
     return {
       slide: 0,
-      sliding: null
+      sliding: null,
+      datas: [],
+      isLoading: false
     }
   },
   methods: {
@@ -158,38 +160,41 @@ export default {
   },
   computed: {
     carousels () {
-      return this.datas.filter(e => e.area === 'carousel' && e.show && e.item !== 'title')
+      return this.datas.filter(e => e.item.includes('carousel-item'))
     },
     introTitle () {
-      return this.datas.filter(e => e.area === 'intro' && e.show && e.item === 'title')[0]
+      return this.datas.filter(e => e.item.includes('intro-title'))[0]
     },
     intros () {
-      return this.datas.filter(e => e.area === 'intro' && e.show && e.item !== 'title')
+      return this.datas.filter(e => e.item.includes('intro-item'))
     },
     miniproductsTitle () {
-      return this.datas.filter(e => e.area === 'miniproducts' && e.show && e.item === 'title')[0]
+      return this.datas.filter(e => e.item.includes('miniproducts-title'))[0]
     },
     miniaboutTitle () {
-      return this.datas.filter(e => e.area === 'miniabout' && e.show && e.item === 'title')[0]
+      return this.datas.filter(e => e.item.includes('miniabout-title'))[0]
     },
     miniabouts () {
-      return this.datas.filter(e => e.area === 'miniabout' && e.show && e.item !== 'title')
+      return this.datas.filter(e => e.item.includes('miniabout-item'))
     },
     callToAction () {
-      return this.datas.filter(e => e.area === 'calltoaction' && e.show && e.item !== 'title')[0]
+      return this.datas.filter(e => e.item.includes('calltoaction-item'))[0]
     },
     minirecommendTitle () {
-      return this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item === 'title')[0]
+      return this.datas.filter(e => e.item.includes('minirecommend-title'))[0]
     },
     minirecommends () {
-      return this.datas.filter(e => e.area === 'minirecommend' && e.show && e.item !== 'title')[0]
+      return this.datas.filter(e => e.item.includes('minirecommend-item'))
     },
     minifooter () {
-      return this.datas.filter(e => e.area === 'minifooter' && e.show && e.item !== 'title')[0]
+      return this.datas.filter(e => e.item.includes('minifooter-item'))[0]
     }
   },
   mounted () {
-    console.log('Test' + this.introTitle)
+    if (this.webdata.pages.length > 0) {
+      this.datas = this.webdata.pages
+      this.isLoading = true
+    }
   }
 }
 </script>

@@ -33,6 +33,9 @@
 <script>
 import BannerBox from '@/components/BannerBox.vue'
 export default {
+  props: {
+    webdata: Object
+  },
   name: 'News',
   data () {
     return {

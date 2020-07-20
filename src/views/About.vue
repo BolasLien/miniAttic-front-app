@@ -1,7 +1,6 @@
 <template>
   <div id="about">
         <!-- 麵包屑 -->
-
     <b-container>
       <b-breadcrumb>
         <b-breadcrumb-item href="/">
@@ -35,6 +34,9 @@
 
 <script>
 export default {
+  props: {
+    webdata: Object
+  },
   name: 'About',
   data () {
     return {

@@ -44,6 +44,9 @@
 <script>
 // import Heading from '@/components/Heading.vue'
 export default {
+  props: {
+    webdata: Object
+  },
   name: 'About',
   data () {
     return {

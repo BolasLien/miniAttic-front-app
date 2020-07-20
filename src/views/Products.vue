@@ -140,7 +140,7 @@ import Heading from '@/components/Heading.vue'
 import LinkItem from '@/components/LinkItem.vue'
 export default {
   props: {
-    products: Array
+    webdata: Object
   },
   name: 'Products',
   data () {
@@ -163,10 +163,9 @@ export default {
     LinkItem
   },
   mounted () {
-    this.data = this.products.filter(e => e.item === this.$route.params.id)[0]
+    this.data = this.webdata.products.filter(e => e.item === this.$route.params.id)[0]
     if (this.data === undefined) {
       this.$router.push('/NotFound')
-      console.log('aasdasdasd')
     }
   }
 }

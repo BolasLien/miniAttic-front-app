@@ -1,5 +1,5 @@
 <template>
-  <div id="shop">
+  <div id="shop" v-if="isLoading">
     <!-- 麵包屑 -->
     <b-container>
       <b-breadcrumb>
@@ -56,10 +56,22 @@ import LinkItem from '@/components/LinkItem.vue'
 export default {
   name: 'Shop',
   props: {
-    products: Array
+    webdata: Object
+  },
+  data () {
+    return {
+      products: [],
+      isLoading: false
+    }
   },
   components: {
     LinkItem
+  },
+  mounted () {
+    if (this.webdata.products.length > 0) {
+      this.products = this.webdata.products
+      this.isLoading = true
+    }
   }
 }
 </script>
