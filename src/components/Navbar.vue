@@ -44,11 +44,6 @@
           <b-navbar-nav class="m-auto">
             <b-nav-item to="/About">關於我們</b-nav-item>
             <b-nav-item to="/Shop">各式甜點</b-nav-item>
-            <!-- <b-nav-item-dropdown text="各式甜點">
-              <b-dropdown-item to="/Shop">布朗尼 BROWNIE</b-dropdown-item>
-              <b-dropdown-item to="/Shop">餅乾 COOKIE</b-dropdown-item>
-              <b-dropdown-item to="/Shop">下午茶 CAKE</b-dropdown-item>
-            </b-nav-item-dropdown>-->
             <b-nav-item to="/News">最新消息</b-nav-item>
             <b-nav-item to="/Faq">購買流程</b-nav-item>
           </b-navbar-nav>
