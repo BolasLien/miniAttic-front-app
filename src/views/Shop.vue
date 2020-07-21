@@ -17,26 +17,20 @@
         <b-row>
           <b-col sm="3" md="2" class="hidden-xs">
             <ul>
-              <li>
-                <a href="#">布朗尼 BROWNIE</a>
-              </li>
-              <li>
-                <a href="#">餅乾 COOKIE</a>
-              </li>
-              <li>
-                <a href="#">蛋糕 CAKE</a>
+              <li v-for="data in categorys" :key="data.item">
+                <a href="#" @click="onTagClick(data)">{{data.name}}</a>
               </li>
             </ul>
           </b-col>
           <b-col sm="9" md="10">
-            <h1 class="head">各式甜點</h1>
+            <h1 class="head">{{head}}</h1>
             <b-row class="ml-n1 mr-n1">
-              <b-col lg="3" sm="6" v-for="(data,index) in products" :key="index">
-          <LinkItem
-            :to="'/products/' + data.item"
-            :src="data.src"
-            :text="data.name"
-          ></LinkItem>
+              <b-col lg="3" sm="6" v-for="data in showProducts" :key="data.item">
+                <LinkItem
+                  :to="'/products/' + data.item"
+                  :src="data.src"
+                  :text="data.name"
+                ></LinkItem>
                 <div class="price">
                   <small>NT$&ensp;</small>
                   {{data.price}}
@@ -60,16 +54,29 @@ export default {
   },
   data () {
     return {
+      head: '全部 ALL',
+      showProducts: [],
       products: [],
+      categorys: [],
       isLoading: false
     }
   },
   components: {
     LinkItem
   },
+  methods: {
+    onTagClick (data) {
+      event.preventDefault()
+      this.showProducts = []
+      this.showProducts = data.item === '0' ? this.products : this.products.filter(item => item.class === data.item)
+      this.head = data.name
+    }
+  },
   mounted () {
     if (this.webdata.products.length > 0) {
       this.products = this.webdata.products
+      this.showProducts = this.webdata.products
+      this.categorys = this.webdata.categorys
       this.isLoading = true
     }
   }
