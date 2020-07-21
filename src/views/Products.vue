@@ -30,11 +30,11 @@
           </div>
           <!-- 這裡要放數量的控制元件 -->
           <div class="quantity">
-            <button class="btn add-down" @click="quantity--">
+            <button class="btn add-down" @click="add(-1)">
               <font-awesome-icon class="fa" :icon="['fas','minus']"></font-awesome-icon>
             </button>
             <input type="text" name="quantity" :value="quantity" />
-            <button class="btn add-up" @click="quantity++">
+            <button class="btn add-up" @click="add(1)">
               <font-awesome-icon class="fa" :icon="['fas','plus']"></font-awesome-icon>
             </button>
           </div>
@@ -161,6 +161,14 @@ export default {
   components: {
     Heading,
     LinkItem
+  },
+  methods: {
+    add (num) {
+      this.quantity += num
+      if (this.quantity <= 0) {
+        this.quantity = 0
+      }
+    }
   },
   mounted () {
     this.data = this.webdata.products.filter(e => e.item === this.$route.params.id)[0]

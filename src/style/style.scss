@@ -120,6 +120,9 @@ a:hover {
   }
 
   .quantity {
+    display: flex;
+    align-items: center;
+
     button{
       height: 2.6rem;
       box-sizing: border-box;
@@ -257,4 +260,43 @@ a:hover {
     color: #89b0ae;
     text-decoration: none;
   }
+}
+
+#login,#reg{
+
+  .form{
+    padding: 30px;
+    margin: 30px 0;
+    background: #FFF;
+    -moz-box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control{
+    border-radius: 0;
+    color: #555b6e;
+  }
+
+  .btn{
+    width: 100%;
+  }
+
+  button{
+    background-color: #555b6e;
+    color: #faf9f9;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  button:focus{
+    box-shadow: none;
+  }
+
+  button:hover{
+    border: 1px solid #555b6e;
+    background-color: #faf9f9;
+    color: #555b6e;
+  }
+
 }
