@@ -16,6 +16,8 @@ import { faShoppingCart, faUser, faSignInAlt, faPlus, faMinus } from '@fortaweso
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import VueGtag from 'vue-gtag'
+
 axios.defaults.withCredentials = true
 Vue.use(VueAxios, axios)
 
@@ -26,6 +28,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueGtag, {
+  config: { id: 'G-NXGJ8V0XNM' }
+})
 new Vue({
   router,
   store,
