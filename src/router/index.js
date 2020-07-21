@@ -48,6 +48,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "reg" */ '../views/Reg.vue')
   },
   {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
+  },
+  {
     path: '*',
     name: 'NotFound',
     component: () => import(/* webpackChunkName: "notfound" */ '../views/NotFound.vue'),

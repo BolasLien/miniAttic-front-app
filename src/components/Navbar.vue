@@ -29,7 +29,7 @@
             <span class="hidden-xs">登入</span>
           </router-link>
           <span>&ensp;|&ensp;</span>
-          <router-link to="/">
+          <router-link to="/cart">
             <font-awesome-icon :icon="['fas','shopping-cart']" size="lg"></font-awesome-icon>
             <span class="hidden-xs">購物車</span>
           </router-link>
