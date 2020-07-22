@@ -29,15 +29,7 @@
             <small>NT$&ensp;</small>{{data.price}}
           </div>
           <!-- 這裡要放數量的控制元件 -->
-          <div class="quantity">
-            <button class="btn add-down" @click="add(-1)">
-              <font-awesome-icon class="fa" :icon="['fas','minus']"></font-awesome-icon>
-            </button>
-            <input type="text" name="quantity" :value="quantity" />
-            <button class="btn add-up" @click="add(1)">
-              <font-awesome-icon class="fa" :icon="['fas','plus']"></font-awesome-icon>
-            </button>
-          </div>
+          <Quantity v-model="quantity"></Quantity>
           <button class="btn btn-buy">加到購物車</button>
         </b-col>
       </b-row>
@@ -138,6 +130,7 @@
 <script>
 import Heading from '@/components/Heading.vue'
 import LinkItem from '@/components/LinkItem.vue'
+import Quantity from '@/components/Quantity.vue'
 export default {
   props: {
     webdata: Object
@@ -160,7 +153,8 @@ export default {
   },
   components: {
     Heading,
-    LinkItem
+    LinkItem,
+    Quantity
   },
   methods: {
     add (num) {
