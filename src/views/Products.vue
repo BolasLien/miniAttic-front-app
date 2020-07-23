@@ -30,7 +30,7 @@
           </div>
           <!-- 這裡要放數量的控制元件 -->
           <Quantity v-model="quantity"></Quantity>
-          <button class="btn btn-buy">加到購物車</button>
+          <button class="btn btn-buy" @click="addProduct(data)">加到購物車</button>
         </b-col>
       </b-row>
     </b-container>
@@ -157,11 +157,16 @@ export default {
     Quantity
   },
   methods: {
-    add (num) {
-      this.quantity += num
-      if (this.quantity <= 0) {
-        this.quantity = 0
+    addProduct (data) {
+      const product = {
+        item: data.item,
+        name: data.name,
+        src: data.src,
+        price: data.price,
+        amount: this.quantity
       }
+
+      this.$store.commit('addProduct', product)
     }
   },
   mounted () {

@@ -1,15 +1,57 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
+    cart: {
+      products: [],
+      productCount: 0,
+      totalPrice: 0,
+      totalAmount: 0
+    }
   },
   mutations: {
+    addProduct (state, data) {
+      const products = state.cart.products
+      let productCount = state.cart.productCount
+      let totalPrice = 0
+      let totalAmount = 0
+
+      const product = products.find(e => e.item === data.item)
+      if (product) {
+        // 如果購物車有這個商品，數量++
+        product.amount += data.amount
+      } else {
+        // 如果購物車沒有這個商品，就放進商品清單，並且商品種類++
+        products.push(data)
+        productCount++
+      }
+
+      // 計算 商品金額 跟 商品數量
+      for (const e of products) {
+        totalPrice += e.amount * e.price
+        totalAmount += e.amount
+      }
+
+      state.cart = {
+        products,
+        productCount,
+        totalPrice,
+        totalAmount
+      }
+    },
   },
   actions: {
   },
   modules: {
+  },
+  getters: {
+    cart (state) {
+      return state.cart
+    }
   }
 })
