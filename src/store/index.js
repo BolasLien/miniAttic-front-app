@@ -12,7 +12,8 @@ export default new Vuex.Store({
       productCount: 0,
       totalPrice: 0,
       totalAmount: 0
-    }
+    },
+    user: ''
   },
   mutations: {
     addProduct (state, data) {
@@ -72,6 +73,12 @@ export default new Vuex.Store({
         totalPrice,
         totalAmount
       }
+    },
+    login (state, data) {
+      state.user = data
+    },
+    logout (state) {
+      state.user = ''
     }
   },
   actions: {
@@ -81,6 +88,9 @@ export default new Vuex.Store({
   getters: {
     cart (state) {
       return state.cart
+    },
+    user (state) {
+      return state.user
     }
   }
 })

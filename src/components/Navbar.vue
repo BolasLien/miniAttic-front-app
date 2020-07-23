@@ -19,16 +19,26 @@
           </router-link>
         </b-col>
         <b-col class="login" cols="4">
-          <router-link to="/reg">
+          <router-link to="/reg" v-if="user.length===0 || user === undefined">
             <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
-            <span class="hidden-xs">註冊</span>
+            <span class="hidden-xs" >註冊</span>
+          </router-link>
+          <router-link to="/" v-else>
+            <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
+            <span class="hidden-xs">訂單管理</span>
           </router-link>
           <span>&ensp;|&ensp;</span>
-          <router-link to="/login">
+
+          <router-link to="/login" v-if="user.length===0 || user === undefined">
             <font-awesome-icon :icon="['fas','sign-in-alt']" size="lg"></font-awesome-icon>
             <span class="hidden-xs">登入</span>
           </router-link>
+          <a to="/" v-else @click="logout">
+            <font-awesome-icon :icon="['fas','sign-out-alt']" size="lg"></font-awesome-icon>
+            <span class="hidden-xs">登出</span>
+          </a>
           <span>&ensp;|&ensp;</span>
+
           <router-link to="/cart">
             <font-awesome-icon :icon="['fas','shopping-cart']" size="lg"></font-awesome-icon>
             <span class="hidden-xs" v-if="cartNum<=0">購物車</span>
@@ -60,6 +70,40 @@ export default {
   computed: {
     cartNum () {
       return this.$store.getters.cart.totalAmount
+    },
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  methods: {
+    logout (event) {
+      event.preventDefault()
+
+      this.axios
+        .delete(process.env.VUE_APP_API + '/logout')
+        .then(response => {
+          const data = response.data
+          // 如果回來的資料 success 是 true
+          if (data.success) {
+            alert('登出成功')
+            // 呼叫 vuex 的登出
+            this.$store.commit('logout')
+
+            // 如果現在不是在首頁，跳到登出後的首頁
+            if (this.$route.path !== '/') {
+              // 跳到登出後的首頁
+              this.$router.push('/')
+            }
+          } else {
+            alert(data.message)
+          }
+        })
+        .catch(error => {
+          // 如果回來的狀態不是 200，顯示回來的 message
+          alert(error.response.data.message)
+        })
+
+      this.$store.commit('logout', this.user)
     }
   }
 }

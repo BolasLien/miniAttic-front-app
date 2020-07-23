@@ -16,12 +16,27 @@
       <b-row class="justify-content-md-center">
         <b-col class="form" sm="12" lg="6" md="8">
           <p class="h4 text-center mb-4 mt-4">會員登入</p>
-          <input type="email" class="form-control" placeholder="請輸入註冊信箱" />
-          <br />
-          <input type="password" class="form-control" placeholder="請輸入會員密碼" />
-          <div class="text-center mt-4 mb-4">
-            <button class="btn btn-indigo" type="submit">會員登入</button>
-          </div>
+            <b-form @submit="submit">
+            <!-- 信箱 -->
+            <b-form-group class="text-left">
+              <b-form-input
+                id="input-account"
+                v-model="account"
+                type="email"
+                placeholder="請輸入信箱"
+              ></b-form-input>
+            </b-form-group>
+            <!-- 密碼 -->
+            <b-form-group class="text-left">
+              <b-form-input
+                id="input-password"
+                v-model="password"
+                type="password"
+                placeholder="請輸入密碼"
+              ></b-form-input>
+            </b-form-group>
+            <b-button type="submit">會員登入</b-button>
+          </b-form>
         </b-col>
       </b-row>
     </b-container>
@@ -30,6 +45,45 @@
 
 <script>
 export default {
-  components: {}
+  data () {
+    return {
+      account: '',
+      password: ''
+    }
+  },
+  methods: {
+    submit (event) {
+      event.preventDefault()
+
+      if (!this.account.includes('@')) {
+        alert('信箱格式不符')
+      } else if (this.password.length < 8) {
+        alert('密碼格式不符')
+      }
+
+      this.axios.post(
+        process.env.VUE_APP_API + '/login',
+        { account: this.account, password: this.password }
+      )
+        .then(response => {
+          const data = response.data
+          if (data.success) {
+            // 如果回來的資料 success 是 true
+            alert('登入成功')
+            // 呼叫 vuex 的登入
+            this.$store.commit('login', data.name)
+            // 跳到登入後的首頁
+            this.$router.push('/')
+          } else {
+            // 不是就顯示回來的 message
+            alert(data.message)
+          }
+        })
+        .catch(error => {
+          // 如果回來的狀態不是 200，顯示回來的 message
+          alert(error.response.data.message)
+        })
+    }
+  }
 }
 </script>
