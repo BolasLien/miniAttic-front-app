@@ -120,14 +120,17 @@ a:hover {
   }
 
   .btn-buy {
-    margin-top: 1.2rem;
-    height: 4rem;
     background-color: #555b6e;
     color: #faf9f9;
+    border-radius: 0;
+    text-align: center;
+    margin-top: 1.2rem;
+    height: 4rem;
     width: 100%;
   }
 
   .btn-buy:hover {
+    border: 1px solid #555b6e;
     background-color: #faf9f9;
     color: #555b6e;
   }
@@ -285,7 +288,7 @@ a:hover {
     text-align: center;
   }
 
-  .cart-head{
+  .cart-head {
     justify-content: center;
     align-items: center;
     background-color: #555b6e;
@@ -330,16 +333,16 @@ a:hover {
     color: #aa1c20;
   }
 
-  .finish-button{
+  .finish-button {
     background-color: #aa1c20 !important;
-    border:1px solid #aa1c20 !important;
+    border: 1px solid #aa1c20 !important;
     color: #faf9f9 !important;
-    transition: .25s;
+    transition: 0.25s;
   }
 
-  .finish-button:hover{
+  .finish-button:hover {
     background-color: #faf9f9 !important;
-    border:1px solid #aa1c20 !important;
+    border: 1px solid #aa1c20 !important;
     color: #aa1c20 !important;
   }
 }
