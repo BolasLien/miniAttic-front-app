@@ -204,12 +204,10 @@ export default {
       // this.shoppigList.splice(this.shoppigList.indexOf(data), 1)
     },
     submit () {
-      console.log(this.order)
       alert('訂單送出成功')
     },
     paymentSelect (data) {
       this.payment = data
-      console.log(this.payment)
     }
   },
   computed: {
