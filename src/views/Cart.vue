@@ -1,6 +1,7 @@
 <template>
   <div id="cart">
-    <b-container class="shopping-step mt-4 mb-5">
+    <!-- 如果購物車有商品 -->
+    <b-container class="shopping-step mt-4 mb-5" v-if="shoppigList.length>0">
       <form-wizard title subtitle @on-complete="submit" color="#555b6e" class="p-n5">
         <tab-content :title="steps[0]">
           <b-container class="cart">
@@ -144,6 +145,16 @@
         </template>
       </form-wizard>
     </b-container>
+    <!-- 如果購物車沒有商品 -->
+    <b-container v-else>
+      <p>
+        你的購物車沒有商品喔
+        <br />
+      </p>
+      <h1>
+        <router-link to="/shop">可以從這裡去看看喔！</router-link>
+      </h1>
+    </b-container>
   </div>
 </template>
 
@@ -157,32 +168,6 @@ export default {
     return {
       steps: ['確認商品', '選擇付款與運送方式', '送出訂單'],
       currentStep: 0,
-      shoppigList: [
-        {
-          item: 1,
-          name: '布朗尼 | 草莓',
-          src:
-            'http://220.128.133.15/s1090109/miniattic/assets/img/1594965691254.jpg',
-          amount: 2,
-          price: 480
-        },
-        {
-          item: 2,
-          name: '蛋糕 | 檸檬',
-          src:
-            'http://220.128.133.15/s1090109/miniattic/assets/img/1595310976856.jpg',
-          amount: 1,
-          price: 480
-        },
-        {
-          item: 3,
-          name: '餅乾 | 芥末',
-          src:
-            'http://220.128.133.15/s1090109/miniattic/assets/img/1595310987348.jpg',
-          amount: 3,
-          price: 580
-        }
-      ],
       payment: {
         item: 1,
         name: '面交付款',
@@ -211,16 +196,16 @@ export default {
         }
       ],
       paymentPrice: 0
-
     }
   },
   methods: {
     remove (data) {
-      this.shoppigList.splice(this.shoppigList.indexOf(data), 1)
+      this.$store.commit('removeProduct', data)
+      // this.shoppigList.splice(this.shoppigList.indexOf(data), 1)
     },
     submit () {
       console.log(this.order)
-      alert('uuuuuuuuuuuuuuuuuu')
+      alert('訂單送出成功')
     },
     paymentSelect (data) {
       this.payment = data
@@ -228,6 +213,9 @@ export default {
     }
   },
   computed: {
+    shoppigList () {
+      return this.$store.getters.cart.products
+    },
     totalAmount () {
       return this.shoppigList
         .map(e => e.amount)
@@ -252,7 +240,7 @@ export default {
         })
       }
 
-      return [cart, this.payment]
+      return { cart: cart, payment: this.payment }
     }
   }
 }

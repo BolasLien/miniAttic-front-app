@@ -31,7 +31,8 @@
           <span>&ensp;|&ensp;</span>
           <router-link to="/cart">
             <font-awesome-icon :icon="['fas','shopping-cart']" size="lg"></font-awesome-icon>
-            <span class="hidden-xs">購物車</span>
+            <span class="hidden-xs" v-if="cartNum<=0">購物車</span>
+            <span class="hidden-xs" v-else>共 {{cartNum}} 件商品</span>
           </router-link>
         </b-col>
       </b-row>
@@ -55,6 +56,11 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  computed: {
+    cartNum () {
+      return this.$store.getters.cart.totalAmount
+    }
+  }
 }
 </script>
