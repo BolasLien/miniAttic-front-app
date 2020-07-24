@@ -18,7 +18,7 @@
               </b-col>
               <b-col sm="3">{{data.name}}</b-col>
               <b-col sm="2">
-                <quantity v-model="data.amount"></quantity>
+                <quantity v-model="data.amount" @update="update(data)"></quantity>
               </b-col>
               <b-col sm="3">
                 <small>NT$&ensp;</small>
@@ -209,6 +209,9 @@ export default {
     }
   },
   methods: {
+    update (data) {
+      this.$store.commit('updateProduct', data)
+    },
     remove (data) {
       this.$store.commit('removeProduct', data)
       // this.shoppigList.splice(this.shoppigList.indexOf(data), 1)
@@ -267,7 +270,7 @@ export default {
         products.push({
           item: e.item,
           name: e.name,
-          amout: e.amount
+          amount: e.amount
         })
       }
 
