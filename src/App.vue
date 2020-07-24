@@ -3,7 +3,7 @@
     <!-- Navbar -->
     <Navbar></Navbar>
     <!-- views的頁面 -->
-    <router-view v-if="isRouterAlive" :webdata="webdata" :products="products" :pages="pages"/>
+    <router-view v-if="isRouterAlive" :webdata="webdata"/>
     <!-- Footer -->
     <Footer></Footer>
   </div>
@@ -21,8 +21,6 @@ export default {
   data () {
     return {
       isRouterAlive: false,
-      pages: [],
-      products: [],
       webdata: []
     }
   },
