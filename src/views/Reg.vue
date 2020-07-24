@@ -114,9 +114,13 @@ export default {
         .then(response => {
           if (response.data.success) {
             alert(response.data.message)
+            this.$router.push('login')
           }
         })
         .catch(error => {
+          if (error.response.data) {
+            alert(error.response.data.message)
+          }
           console.log(error)
         })
     }
