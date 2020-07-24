@@ -41,32 +41,11 @@
     <b-container class="mt-3 mb-3">
       <heading :title="miniproductsTitle.description1" :subtitle="miniproductsTitle.description2"></heading>
       <b-row>
-        <b-col md="3" sm="6">
+        <b-col md="3" sm="6" v-for="data in miniProducts" :key="data.item">
           <LinkItem
-            to="/products/strobarry"
-            src="http://220.128.133.15/s1090109/1594090276038.jpg"
-            text="布朗尼 | 草莓"
-          ></LinkItem>
-        </b-col>
-        <b-col md="3" sm="6">
-          <LinkItem
-            to="/products/milk"
-            src="http://220.128.133.15/s1090109/1594090298826.jpg"
-            text="布朗尼 | 牛奶"
-          ></LinkItem>
-        </b-col>
-        <b-col md="3" sm="6">
-          <LinkItem
-            to="/products/wasabe"
-            src="http://220.128.133.15/s1090109/1594090305154.jpg"
-            text="布朗尼 | 芥末"
-          ></LinkItem>
-        </b-col>
-        <b-col md="3" sm="6">
-          <LinkItem
-            to="/products/milkshake"
-            src="http://220.128.133.15/s1090109/1594090312145.jpg"
-            text="布朗尼 | 奶昔"
+            :to="'/products/' + data.item"
+            :src="data.src"
+            :text="data.name"
           ></LinkItem>
         </b-col>
       </b-row>
@@ -159,6 +138,14 @@ export default {
     }
   },
   computed: {
+    miniProducts () {
+      const temp = []
+      for (let i = 0; i < 4; i++) {
+        temp.push(this.webdata.products[i])
+      }
+
+      return temp
+    },
     carousels () {
       return this.datas.filter(e => e.item.includes('carousel-item'))
     },
