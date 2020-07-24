@@ -38,10 +38,11 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 axios.defaults.withCredentials = true
 Vue.use(VueAxios, axios)
 
-Vue.use(VueGtag, {
-  config: { id: 'G-NXGJ8V0XNM' }
-})
-
+if (Vue.config.productionTip) {
+  Vue.use(VueGtag, {
+    config: { id: 'G-NXGJ8V0XNM' }
+  })
+}
 Vue.use(VueFormWizard)
 
 new Vue({
