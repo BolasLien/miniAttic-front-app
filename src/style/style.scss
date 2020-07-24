@@ -398,3 +398,39 @@ a:hover {
     color: #aa1c20 !important;
   }
 }
+
+#order{
+  .order-head{
+    margin-top: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #555b6e;
+    color: #faf9f9;
+  }
+
+  .order-item{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 1px solid #555b6e;
+    border-left: 1px solid #555b6e;
+    border-right: 1px solid #555b6e;
+  }
+
+  .order-item:last-child {
+    border-bottom: 1px solid #555b6e;
+    margin-bottom: 2rem;
+  }
+
+  .product{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
