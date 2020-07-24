@@ -43,9 +43,9 @@
             <font-awesome-icon :icon="['fas','shopping-cart']" size="lg"></font-awesome-icon>
             <span class="hidden-md" v-if="cartNum<=0">購物車</span>
             <span v-else>
-              <span class="hidden-md">共</span>
+              <span class="hidden-lg">共</span>
               {{cartNum}}
-              <span class="hidden-md">件商品</span>
+              <span class="hidden-lg">件商品</span>
             </span>
           </router-link>
         </b-col>
