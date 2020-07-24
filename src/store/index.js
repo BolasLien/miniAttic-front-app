@@ -59,6 +59,37 @@ export default new Vuex.Store({
       } else {
         // 如果購物車沒有這個商品，跳出錯誤
         alert('要移除的商品不存在')
+        return
+      }
+
+      // 計算 商品金額 跟 商品數量
+      for (const e of products) {
+        totalPrice += e.amount * e.price
+        totalAmount += e.amount
+      }
+
+      state.cart = {
+        products,
+        productCount,
+        totalPrice,
+        totalAmount
+      }
+    },
+    updateProduct (state, data) {
+      const products = state.cart.products
+      let productCount = state.cart.productCount
+      let totalPrice = 0
+      let totalAmount = 0
+
+      const product = products.find(e => e.item === data.item)
+      if (product.amount > 0) {
+        // 如果購物車的這個商品數量大於零，就把資料更新
+        product.amount = data.amount
+        productCount = products.length
+      } else {
+        // 如果購物車的這個商品數量不大於零，就把這個資料從購物車移除
+        this.commit('removeProduct', data)
+        return
       }
 
       // 計算 商品金額 跟 商品數量
