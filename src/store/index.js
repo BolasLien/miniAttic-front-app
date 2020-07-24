@@ -74,6 +74,14 @@ export default new Vuex.Store({
         totalAmount
       }
     },
+    clearCart (state) {
+      state.cart = {
+        products: [],
+        productCount: 0,
+        totalPrice: 0,
+        totalAmount: 0
+      }
+    },
     login (state, data) {
       state.user = data
     },

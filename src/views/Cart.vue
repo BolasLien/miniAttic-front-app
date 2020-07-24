@@ -9,7 +9,6 @@
               <b-col sm="12">以下是您選購的商品</b-col>
             </b-row>
             <b-row
-              style="height:150px;"
               class="cart-item"
               v-for="data in shoppigList"
               :key="data.item"
@@ -39,7 +38,6 @@
 
             <b-row
               class="payment-item"
-              class="cart-item"
               v-for="data in payments"
               :key="data.item"
             >
@@ -68,7 +66,6 @@
             </b-row>
 
             <b-row
-              style="height:120px;"
               class="order-item"
               v-for="data in shoppigList"
               :key="data.item"
@@ -217,13 +214,36 @@ export default {
       // this.shoppigList.splice(this.shoppigList.indexOf(data), 1)
     },
     submit () {
-      alert('訂單送出成功')
+      if (this.user.length === 0 || this.user === undefined) {
+        alert('尚未登入喔')
+        this.$router.push('login')
+        return
+      }
+
+      this.axios.post(process.env.VUE_APP_API + '/order', {
+        products: this.order.products,
+        payment: this.order.payment,
+        remark: this.order.remark
+      })
+        .then(response => {
+          if (response.data.success) {
+            alert(response.data.message)
+            // 訂單送出後，把購物車清空
+            this.$store.commit('clearCart')
+            this.$router.push('order')
+          }
+        }).catch(error => {
+          console.log(error)
+        })
     },
     paymentSelect (data) {
       this.payment = data
     }
   },
   computed: {
+    user () {
+      return this.$store.getters.user
+    },
     shoppigList () {
       return this.$store.getters.cart.products
     },
@@ -242,16 +262,16 @@ export default {
       return count + this.paymentPrice
     },
     order () {
-      const cart = []
+      const products = []
       for (const e of this.shoppigList) {
-        cart.push({
+        products.push({
           item: e.item,
           name: e.name,
           amout: e.amount
         })
       }
 
-      return { cart: cart, payment: this.payment }
+      return { products: products, payment: this.payment, remark: this.remark }
     }
   }
 }

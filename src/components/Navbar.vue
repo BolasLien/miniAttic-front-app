@@ -23,7 +23,7 @@
             <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
             <span class="hidden-xs" >註冊</span>
           </router-link>
-          <router-link to="/" v-else>
+          <router-link to="/order" v-else>
             <font-awesome-icon :icon="['fas','user']" size="lg"></font-awesome-icon>
             <span class="hidden-xs">訂單管理</span>
           </router-link>
