@@ -15,7 +15,7 @@
     <div class="shop-box">
       <b-container>
         <b-row>
-          <b-col sm="3" md="2" class="hidden-xs">
+          <b-col sm="3" md="2" class="hidden-md">
             <ul>
               <li v-for="data in categorys" :key="data.item">
                 <a href="#" @click="onTagClick(data)">{{data.name}}</a>

@@ -1,11 +1,29 @@
-// @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
 body {
   font-family: "HunInn", "Noto Sans TC", sans-serif;
 }
 
-@media (max-width: 767px) {
-  .hidden-xs {
+// 斷點
+@media (max-width: 575.98px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .hidden-xl {
     display: none !important;
   }
 }
