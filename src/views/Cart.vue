@@ -5,7 +5,7 @@
       <form-wizard title subtitle @on-complete="submit" color="#555b6e" class="p-n5">
         <tab-content :title="steps[0]">
           <b-container class="cart">
-            <b-row style="height:50px;" class="cart-head">
+            <b-row class="cart-head">
               <b-col sm="12">以下是您選購的商品</b-col>
             </b-row>
             <b-row
@@ -33,12 +33,12 @@
         </tab-content>
         <tab-content :title="steps[1]">
           <b-container class="cart">
-            <b-row style="height:50px;" class="cart-head">
+            <b-row class="payment-head">
               <b-col sm="12">請選擇您的付款方式</b-col>
             </b-row>
 
             <b-row
-              style="height:100px;"
+              class="payment-item"
               class="cart-item"
               v-for="data in payments"
               :key="data.item"
@@ -63,7 +63,7 @@
         </tab-content>
         <tab-content :title="steps[2]">
           <b-container class="order">
-            <b-row style="height:50px;" class="order-head">
+            <b-row class="order-head">
               <b-col sm="12">請確認您的訂單</b-col>
             </b-row>
 
@@ -85,7 +85,7 @@
               <b-col sm="1"></b-col>
             </b-row>
 
-            <b-row style="height:50px;" class="order-item">
+            <b-row class="order-item">
               <b-col sm="3">付款及運送方式</b-col>
               <b-col sm="3">{{payment.name}}</b-col>
               <b-col sm="2">{{payment.description}}</b-col>
@@ -94,6 +94,19 @@
                 {{payment.price}}
               </b-col>
               <b-col sm="1"></b-col>
+            </b-row>
+            <!-- 輸入備註 -->
+            <b-row class="order-item">
+              <b-col sm="5">有甚麼想告訴我們的嗎?</b-col>
+              <b-col sm="7">
+                    <b-form-textarea
+      id="textarea"
+      v-model="remark"
+      placeholder="可以在這裡告訴我們..."
+      rows="3"
+      max-rows="6"
+    ></b-form-textarea>
+              </b-col>
             </b-row>
           </b-container>
         </tab-content>
@@ -167,7 +180,6 @@ export default {
   data () {
     return {
       steps: ['確認商品', '選擇付款與運送方式', '送出訂單'],
-      currentStep: 0,
       payment: {
         item: 1,
         name: '面交付款',
@@ -195,7 +207,8 @@ export default {
           selected: false
         }
       ],
-      paymentPrice: 0
+      paymentPrice: 0,
+      remark: ''
     }
   },
   methods: {
