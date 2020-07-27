@@ -45,7 +45,8 @@ export default {
           if (this.user.length > 0) {
             if (!data) {
               this.$swal({
-                title: '長時間未操作',
+                title: '訊息',
+                text: '長時間未操作，自動登出',
                 icon: 'error',
                 timer: 1000,
                 timerProgressBar: true
@@ -63,7 +64,8 @@ export default {
         .catch(error => {
           console.log(error)
           this.$swal({
-            title: '發生錯誤',
+            title: '訊息',
+            text: '發生錯誤',
             icon: 'error',
             timer: 1000,
             timerProgressBar: true
