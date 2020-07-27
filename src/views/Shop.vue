@@ -55,9 +55,7 @@ export default {
   data () {
     return {
       head: '全部 ALL',
-      showProducts: [],
-      products: [],
-      categorys: [],
+      nowTag: '0',
       isLoading: false
     }
   },
@@ -65,18 +63,26 @@ export default {
     LinkItem
   },
   methods: {
-    onTagClick (data) {
+    onTagClick (tag) {
       event.preventDefault()
-      this.showProducts = []
-      this.showProducts = data.item === '0' ? this.products : this.products.filter(item => item.class === data.item)
-      this.head = data.name
+
+      this.nowTag = tag.item
+      this.head = tag.name
+    }
+  },
+  computed: {
+    products () {
+      return this.webdata.products
+    },
+    categorys () {
+      return this.webdata.categorys
+    },
+    showProducts () {
+      return this.nowTag === '0' ? this.products : this.products.filter(item => item.class === this.nowTag)
     }
   },
   mounted () {
     if (this.webdata.products.length > 0) {
-      this.products = this.webdata.products
-      this.showProducts = this.webdata.products
-      this.categorys = this.webdata.categorys
       this.isLoading = true
     }
   }

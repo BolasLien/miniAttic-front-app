@@ -101,17 +101,7 @@ export default {
   name: 'Products',
   data () {
     return {
-      quantity: 1,
-      data: {
-        item: '',
-        src: '',
-        class: '',
-        name: '',
-        subheading: '',
-        intro: '',
-        price: '',
-        description: ''
-      }
+      quantity: 1
     }
   },
   components: {
@@ -129,6 +119,18 @@ export default {
         amount: this.quantity
       }
 
+      this.$swal(
+        {
+          toast: true,
+          position: 'top-end',
+          title: data.name + ' x ' + this.quantity,
+          text: '已加入購物車',
+          imageUrl: data.src,
+          imageWidth: 100,
+          timer: 1500,
+          showConfirmButton: false
+        }
+      )
       this.$store.commit('addProduct', product)
     }
   },
@@ -145,10 +147,12 @@ export default {
       }
 
       return temp
+    },
+    data () {
+      return this.webdata.products.find(e => e.item === this.$route.params.id)
     }
   },
   mounted () {
-    this.data = this.webdata.products.find(e => e.item === this.$route.params.id)
     if (this.data === undefined) {
       this.$router.push('/NotFound')
     }

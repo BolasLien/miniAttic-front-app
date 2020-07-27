@@ -125,7 +125,6 @@ export default {
     return {
       slide: 0,
       sliding: null,
-      datas: [],
       isLoading: false
     }
   },
@@ -138,6 +137,9 @@ export default {
     }
   },
   computed: {
+    datas () {
+      return this.webdata.pages
+    },
     miniProducts () {
       const temp = []
       for (let i = 0; i < 4; i++) {
@@ -150,36 +152,35 @@ export default {
       return this.datas.filter(e => e.item.includes('carousel-item'))
     },
     introTitle () {
-      return this.datas.filter(e => e.item.includes('intro-title'))[0]
+      return this.datas.find(e => e.item.includes('intro-title'))
     },
     intros () {
       return this.datas.filter(e => e.item.includes('intro-item'))
     },
     miniproductsTitle () {
-      return this.datas.filter(e => e.item.includes('miniproducts-title'))[0]
+      return this.datas.find(e => e.item.includes('miniproducts-title'))
     },
     miniaboutTitle () {
-      return this.datas.filter(e => e.item.includes('miniabout-title'))[0]
+      return this.datas.find(e => e.item.includes('miniabout-title'))
     },
     miniabouts () {
       return this.datas.filter(e => e.item.includes('miniabout-item'))
     },
     callToAction () {
-      return this.datas.filter(e => e.item.includes('calltoaction-item'))[0]
+      return this.datas.find(e => e.item.includes('calltoaction-item'))
     },
     minirecommendTitle () {
-      return this.datas.filter(e => e.item.includes('minirecommend-title'))[0]
+      return this.datas.find(e => e.item.includes('minirecommend-title'))
     },
     minirecommends () {
       return this.datas.filter(e => e.item.includes('minirecommend-item'))
     },
     minifooter () {
-      return this.datas.filter(e => e.item.includes('minifooter-item'))[0]
+      return this.datas.find(e => e.item.includes('minifooter-item'))
     }
   },
   mounted () {
     if (this.webdata.pages.length > 0) {
-      this.datas = this.webdata.pages
       this.isLoading = true
     }
   }
