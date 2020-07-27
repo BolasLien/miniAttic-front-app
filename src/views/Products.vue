@@ -136,7 +136,12 @@ export default {
     products () {
       const temp = []
       for (let i = 0; i < 4; i++) {
-        temp.push(this.webdata.products[i])
+        const r = Math.floor(Math.random() * this.webdata.products.length)
+        if (temp.indexOf(this.webdata.products[r]) !== -1) {
+          i--
+        } else {
+          temp.push(this.webdata.products[r])
+        }
       }
 
       return temp
