@@ -65,6 +65,11 @@
         </b-collapse>
       </b-navbar>
     </div>
+
+    <div>
+      <button @click="success">成功</button>
+      <button @click="fail">失敗</button>
+    </div>
   </div>
 </template>
 
@@ -80,6 +85,24 @@ export default {
     }
   },
   methods: {
+    success () {
+      this.$swal(
+        {
+          title: '訊息',
+          icon: 'success',
+          text: '成功'
+        }
+      )
+    },
+    fail () {
+      this.$swal(
+        {
+          title: '訊息',
+          icon: 'warning',
+          text: '警告'
+        }
+      )
+    },
     logout (event) {
       event.preventDefault()
 
@@ -90,7 +113,8 @@ export default {
           // 如果回來的資料 success 是 true
           if (data.success) {
             this.$swal({
-              title: '登出成功',
+              title: '訊息',
+              text: '登出成功',
               icon: 'success',
               timer: 2000,
               timerProgressBar: true
@@ -106,7 +130,8 @@ export default {
             })
           } else {
             this.$swal({
-              title: data.message,
+              title: '訊息',
+              text: data.message,
               icon: 'error'
             })
           }
@@ -115,7 +140,8 @@ export default {
           if (error.response.data) {
           // 如果回來的狀態不是 200，顯示回來的 message
             this.$swal({
-              title: error.response.data.message,
+              title: '訊息',
+              text: error.response.data.message,
               icon: 'error'
             })
           }

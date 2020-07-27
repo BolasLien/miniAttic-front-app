@@ -92,26 +92,38 @@ export default {
 
       if (this.name.length < 2 || this.name.length > 20) {
         this.$swal({
-          title: '名字格式不符',
-          icon: 'error'
+          title: '訊息',
+          text: '名字格式不符',
+          icon: 'warning',
+          timer: 2000,
+          timerProgressBar: true
         })
         return
       } else if (this.phone.length < 9 || this.phone.length > 10) {
         this.$swal({
-          title: '電話格式不符',
-          icon: 'error'
+          title: '訊息',
+          text: '電話格式不符',
+          icon: 'warning',
+          timer: 2000,
+          timerProgressBar: true
         })
         return
       } else if (!this.account.includes('@')) {
         this.$swal({
-          title: '信箱格式不符',
-          icon: 'error'
+          title: '訊息',
+          text: '信箱格式不符',
+          icon: 'warning',
+          timer: 2000,
+          timerProgressBar: true
         })
         return
       } else if (this.password.length < 8) {
         this.$swal({
-          title: '密碼格式不符',
-          icon: 'error'
+          title: '訊息',
+          text: '密碼格式不符',
+          icon: 'warning',
+          timer: 2000,
+          timerProgressBar: true
         })
         return
       }
@@ -126,7 +138,8 @@ export default {
         .then(response => {
           if (response.data.success) {
             this.$swal({
-              title: response.data.message,
+              title: '訊息',
+              text: response.data.message,
               icon: 'success',
               timer: 2000,
               timerProgressBar: true
@@ -138,8 +151,11 @@ export default {
         .catch(error => {
           if (error.response.data) {
             this.$swal({
-              title: error.response.data.message,
-              icon: 'error'
+              title: '訊息',
+              text: error.response.data.message,
+              icon: 'error',
+              timer: 2000,
+              timerProgressBar: true
             })
           }
           console.log(error)

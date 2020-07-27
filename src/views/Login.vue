@@ -57,16 +57,18 @@ export default {
 
       if (this.account.length === 0) {
         this.$swal({
-          title: '請輸入帳號',
-          icon: 'error',
+          title: '訊息',
+          text: '請輸入帳號',
+          icon: 'warning',
           timer: 2000,
           timerProgressBar: true
         })
         return
       } else if (this.password.length === 0) {
         this.$swal({
-          title: '請輸入密碼',
-          icon: 'error',
+          title: '訊息',
+          text: '請輸入密碼',
+          icon: 'warning',
           timer: 2000,
           timerProgressBar: true
         })
@@ -82,7 +84,8 @@ export default {
           if (data.success) {
             // 如果回來的資料 success 是 true
             this.$swal({
-              title: '登入成功',
+              title: '訊息',
+              text: '登入成功',
               icon: 'success',
               timer: 2000,
               timerProgressBar: true
@@ -95,7 +98,8 @@ export default {
           } else {
             // 不是就顯示回來的 message
             this.$swal({
-              title: data.message,
+              title: '訊息',
+              text: data.message,
               icon: 'error',
               timer: 2000,
               timerProgressBar: true
@@ -106,7 +110,8 @@ export default {
           // 如果回來的狀態不是 200，顯示回來的 message
           if (error.response.data) {
             this.$swal({
-              title: error.response.data.message,
+              title: '訊息',
+              text: error.response.data.message,
               icon: 'error',
               timer: 2000,
               timerProgressBar: true

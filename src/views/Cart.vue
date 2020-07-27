@@ -207,8 +207,9 @@ export default {
     submit () {
       if (this.user.length === 0 || this.user === undefined) {
         this.$swal({
-          title: '尚未登入喔',
-          icon: 'error',
+          title: '訊息',
+          text: '尚未登入喔',
+          icon: 'warning',
           timer: 2000,
           timerProgressBar: true
         }).then(() => {
@@ -226,7 +227,8 @@ export default {
         .then((response) => {
           if (response.data.success) {
             this.$swal({
-              title: response.data.message,
+              title: '訊息',
+              text: response.data.message,
               icon: 'success',
               timer: 2000,
               timerProgressBar: true
