@@ -8,11 +8,7 @@
             <b-row class="cart-head">
               <b-col sm="12">以下是您選購的商品</b-col>
             </b-row>
-            <b-row
-              class="cart-item"
-              v-for="data in shoppigList"
-              :key="data.item"
-            >
+            <b-row class="cart-item" v-for="data in shoppigList" :key="data.item">
               <b-col sm="3">
                 <b-img width="120" :src="data.src"></b-img>
               </b-col>
@@ -36,11 +32,7 @@
               <b-col sm="12">請選擇您的付款方式</b-col>
             </b-row>
 
-            <b-row
-              class="payment-item"
-              v-for="data in payments"
-              :key="data.item"
-            >
+            <b-row class="payment-item" v-for="data in payments" :key="data.item">
               <b-col sm="3" class="text-right">
                 <input
                   type="radio"
@@ -65,11 +57,7 @@
               <b-col sm="12">請確認您的訂單</b-col>
             </b-row>
 
-            <b-row
-              class="order-item"
-              v-for="data in shoppigList"
-              :key="data.item"
-            >
+            <b-row class="order-item" v-for="data in shoppigList" :key="data.item">
               <b-col sm="3">
                 <b-img width="80" :src="data.src"></b-img>
               </b-col>
@@ -96,13 +84,13 @@
             <b-row class="order-item">
               <b-col sm="5">有甚麼想告訴我們的嗎?</b-col>
               <b-col sm="7">
-                    <b-form-textarea
-      id="textarea"
-      v-model="remark"
-      placeholder="可以在這裡告訴我們..."
-      rows="3"
-      max-rows="6"
-    ></b-form-textarea>
+                <b-form-textarea
+                  id="textarea"
+                  v-model="remark"
+                  placeholder="可以在這裡告訴我們..."
+                  rows="3"
+                  max-rows="6"
+                ></b-form-textarea>
               </b-col>
             </b-row>
           </b-container>
@@ -218,24 +206,38 @@ export default {
     },
     submit () {
       if (this.user.length === 0 || this.user === undefined) {
-        alert('尚未登入喔')
-        this.$router.push('login')
+        this.$swal({
+          title: '尚未登入喔',
+          icon: 'error',
+          timer: 2000,
+          timerProgressBar: true
+        }).then(() => {
+          this.$router.push('login')
+        })
         return
       }
 
-      this.axios.post(process.env.VUE_APP_API + '/order', {
-        products: this.order.products,
-        payment: this.order.payment,
-        remark: this.order.remark
-      })
-        .then(response => {
+      this.axios
+        .post(process.env.VUE_APP_API + '/order', {
+          products: this.order.products,
+          payment: this.order.payment,
+          remark: this.order.remark
+        })
+        .then((response) => {
           if (response.data.success) {
-            alert(response.data.message)
-            // 訂單送出後，把購物車清空
-            this.$store.commit('clearCart')
-            this.$router.push('order')
+            this.$swal({
+              title: response.data.message,
+              icon: 'success',
+              timer: 2000,
+              timerProgressBar: true
+            }).then(() => {
+              // 訂單送出後，把購物車清空
+              this.$store.commit('clearCart')
+              this.$router.push('order')
+            })
           }
-        }).catch(error => {
+        })
+        .catch((error) => {
           console.log(error)
         })
     },
@@ -252,7 +254,7 @@ export default {
     },
     totalAmount () {
       return this.shoppigList
-        .map(e => e.amount)
+        .map((e) => e.amount)
         .reduce(function (prev, e) {
           return prev + e
         })

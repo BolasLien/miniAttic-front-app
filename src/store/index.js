@@ -58,7 +58,10 @@ export default new Vuex.Store({
         productCount = products.length
       } else {
         // 如果購物車沒有這個商品，跳出錯誤
-        alert('要移除的商品不存在')
+        this.$swal({
+          title: '要移除的商品不存在',
+          icon: 'error'
+        })
         return
       }
 

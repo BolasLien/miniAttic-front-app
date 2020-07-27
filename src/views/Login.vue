@@ -55,10 +55,22 @@ export default {
     submit (event) {
       event.preventDefault()
 
-      if (!this.account.includes('@')) {
-        alert('信箱格式不符')
-      } else if (this.password.length < 8) {
-        alert('密碼格式不符')
+      if (this.account.length === 0) {
+        this.$swal({
+          title: '請輸入帳號',
+          icon: 'error',
+          timer: 2000,
+          timerProgressBar: true
+        })
+        return
+      } else if (this.password.length === 0) {
+        this.$swal({
+          title: '請輸入密碼',
+          icon: 'error',
+          timer: 2000,
+          timerProgressBar: true
+        })
+        return
       }
 
       this.axios.post(
@@ -69,19 +81,39 @@ export default {
           const data = response.data
           if (data.success) {
             // 如果回來的資料 success 是 true
-            alert('登入成功')
-            // 呼叫 vuex 的登入
-            this.$store.commit('login', data.name)
-            // 跳到登入後的首頁
-            this.$router.push('/')
+            this.$swal({
+              title: '登入成功',
+              icon: 'success',
+              timer: 2000,
+              timerProgressBar: true
+            }).then(() => {
+              // 呼叫 vuex 的登入
+              this.$store.commit('login', data.name)
+              // 跳到登入後的首頁
+              this.$router.push('/')
+            })
           } else {
             // 不是就顯示回來的 message
-            alert(data.message)
+            this.$swal({
+              title: data.message,
+              icon: 'error',
+              timer: 2000,
+              timerProgressBar: true
+            })
           }
         })
         .catch(error => {
           // 如果回來的狀態不是 200，顯示回來的 message
-          alert(error.response.data.message)
+          if (error.response.data) {
+            this.$swal({
+              title: error.response.data.message,
+              icon: 'error',
+              timer: 2000,
+              timerProgressBar: true
+            })
+          } else {
+            console.log(error)
+          }
         })
     }
   }

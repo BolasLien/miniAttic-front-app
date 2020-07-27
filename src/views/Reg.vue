@@ -91,16 +91,28 @@ export default {
       event.preventDefault()
 
       if (this.name.length < 2 || this.name.length > 20) {
-        alert('名字格式不符')
+        this.$swal({
+          title: '名字格式不符',
+          icon: 'error'
+        })
         return
       } else if (this.phone.length < 9 || this.phone.length > 10) {
-        alert('電話格式不符')
+        this.$swal({
+          title: '電話格式不符',
+          icon: 'error'
+        })
         return
       } else if (!this.account.includes('@')) {
-        alert('信箱格式不符')
+        this.$swal({
+          title: '信箱格式不符',
+          icon: 'error'
+        })
         return
       } else if (this.password.length < 8) {
-        alert('密碼格式不符')
+        this.$swal({
+          title: '密碼格式不符',
+          icon: 'error'
+        })
         return
       }
 
@@ -113,13 +125,22 @@ export default {
         })
         .then(response => {
           if (response.data.success) {
-            alert(response.data.message)
-            this.$router.push('login')
+            this.$swal({
+              title: response.data.message,
+              icon: 'success',
+              timer: 2000,
+              timerProgressBar: true
+            }).then(() => {
+              this.$router.push('login')
+            })
           }
         })
         .catch(error => {
           if (error.response.data) {
-            alert(error.response.data.message)
+            this.$swal({
+              title: error.response.data.message,
+              icon: 'error'
+            })
           }
           console.log(error)
         })

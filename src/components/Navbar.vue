@@ -89,22 +89,37 @@ export default {
           const data = response.data
           // 如果回來的資料 success 是 true
           if (data.success) {
-            alert('登出成功')
-            // 呼叫 vuex 的登出
-            this.$store.commit('logout')
+            this.$swal({
+              title: '登出成功',
+              icon: 'success',
+              timer: 2000,
+              timerProgressBar: true
+            }).then(() => {
+              // 呼叫 vuex 的登出
+              this.$store.commit('logout')
 
-            // 如果現在不是在首頁，跳到登出後的首頁
-            if (this.$route.path !== '/') {
+              // 如果現在不是在首頁，跳到登出後的首頁
+              if (this.$route.path !== '/') {
               // 跳到登出後的首頁
-              this.$router.push('/')
-            }
+                this.$router.push('/')
+              }
+            })
           } else {
-            alert(data.message)
+            this.$swal({
+              title: data.message,
+              icon: 'error'
+            })
           }
         })
         .catch((error) => {
+          if (error.response.data) {
           // 如果回來的狀態不是 200，顯示回來的 message
-          alert(error.response.data.message)
+            this.$swal({
+              title: error.response.data.message,
+              icon: 'error'
+            })
+          }
+          console.log(error)
         })
 
       this.$store.commit('logout', this.user)
