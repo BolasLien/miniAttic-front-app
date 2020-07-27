@@ -1,12 +1,12 @@
 <template>
   <div id="order">
     <b-container v-if="orders.length > 0">
-      <b-row class="order-head">
+      <b-row class="head">
         <b-col sm="12">{{ user }}您好，以下是您的訂單</b-col>
       </b-row>
 
       <b-row
-        class="order-item"
+        class="item"
         v-for="data in orders"
         :key="data.item"
       >

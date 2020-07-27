@@ -42,7 +42,6 @@
 </template>
 
 <script>
-// import Heading from '@/components/Heading.vue'
 export default {
   props: {
     webdata: Object
@@ -52,9 +51,6 @@ export default {
     return {
       user: ''
     }
-  },
-  components: {
-    // Heading
   }
 }
 </script>

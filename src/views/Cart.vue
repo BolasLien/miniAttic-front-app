@@ -5,10 +5,10 @@
       <form-wizard title subtitle @on-complete="submit" color="#555b6e" class="p-n5">
         <tab-content :title="steps[0]">
           <b-container class="cart">
-            <b-row class="cart-head">
+            <b-row class="head">
               <b-col sm="12">以下是您選購的商品</b-col>
             </b-row>
-            <b-row class="cart-item" v-for="data in shoppigList" :key="data.item">
+            <b-row class="item" v-for="data in shoppigList" :key="data.item">
               <b-col sm="3">
                 <b-img width="120" :src="data.src"></b-img>
               </b-col>
@@ -27,12 +27,12 @@
           </b-container>
         </tab-content>
         <tab-content :title="steps[1]">
-          <b-container class="cart">
-            <b-row class="payment-head">
+          <b-container class="payment">
+            <b-row class="head">
               <b-col sm="12">請選擇您的付款方式</b-col>
             </b-row>
 
-            <b-row class="payment-item" v-for="data in payments" :key="data.item">
+            <b-row class="item" v-for="data in payments" :key="data.item">
               <b-col sm="3" class="text-right">
                 <input
                   type="radio"
@@ -53,11 +53,11 @@
         </tab-content>
         <tab-content :title="steps[2]">
           <b-container class="order">
-            <b-row class="order-head">
+            <b-row class="head">
               <b-col sm="12">請確認您的訂單</b-col>
             </b-row>
 
-            <b-row class="order-item" v-for="data in shoppigList" :key="data.item">
+            <b-row class="item" v-for="data in shoppigList" :key="data.item">
               <b-col sm="3">
                 <b-img width="80" :src="data.src"></b-img>
               </b-col>
@@ -70,7 +70,7 @@
               <b-col sm="1"></b-col>
             </b-row>
 
-            <b-row class="order-item">
+            <b-row class="item">
               <b-col sm="3">付款及運送方式</b-col>
               <b-col sm="3">{{payment.name}}</b-col>
               <b-col sm="2">{{payment.description}}</b-col>
@@ -81,7 +81,7 @@
               <b-col sm="1"></b-col>
             </b-row>
             <!-- 輸入備註 -->
-            <b-row class="order-item">
+            <b-row class="item">
               <b-col sm="5">有甚麼想告訴我們的嗎?</b-col>
               <b-col sm="7">
                 <b-form-textarea
