@@ -24,8 +24,13 @@ import VueAxios from 'vue-axios'
 // vue gtag
 import VueGtag from 'vue-gtag'
 
+// vue form wizard
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+
+// vue SweetAlert2
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 Vue.config.productionTip = false
 
@@ -44,6 +49,8 @@ if (Vue.config.productionTip) {
   })
 }
 Vue.use(VueFormWizard)
+
+Vue.use(VueSweetalert2)
 
 new Vue({
   router,
