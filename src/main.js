@@ -30,7 +30,7 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
 // vue SweetAlert2
 import VueSweetalert2 from 'vue-sweetalert2'
-import 'sweetalert2/dist/sweetalert2.min.css'
+import 'sweetalert2/dist/sweetalert2.css'
 
 Vue.config.productionTip = false
 
@@ -50,7 +50,10 @@ if (Vue.config.productionTip) {
 }
 Vue.use(VueFormWizard)
 
-Vue.use(VueSweetalert2)
+const options = {
+  confirmButtonColor: '#555b6e'
+}
+Vue.use(VueSweetalert2, options)
 
 new Vue({
   router,
