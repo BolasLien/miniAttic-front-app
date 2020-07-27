@@ -4,12 +4,12 @@
     <b-container>
       <b-row class="align-items-center">
         <b-col class="links" cols="4">
-          <router-link to="/">
-            <font-awesome-icon to="/" :icon="['fab','instagram']" size="lg"></font-awesome-icon>
-          </router-link>
+          <a href="https://www.instagram.com/mini.attic/">
+            <font-awesome-icon :icon="['fab','instagram']" size="lg"></font-awesome-icon>
+          </a>
           <span>&ensp;|&ensp;</span>
           <router-link to="/">
-            <font-awesome-icon to="/" :icon="['fab','facebook-square']" size="lg"></font-awesome-icon>
+            <font-awesome-icon :icon="['fab','facebook-square']" size="lg"></font-awesome-icon>
           </router-link>
         </b-col>
         <b-col class="logo" cols="4">
@@ -66,10 +66,6 @@
       </b-navbar>
     </div>
 
-    <div>
-      <button @click="success">成功</button>
-      <button @click="fail">失敗</button>
-    </div>
   </div>
 </template>
 
@@ -85,24 +81,6 @@ export default {
     }
   },
   methods: {
-    success () {
-      this.$swal(
-        {
-          title: '訊息',
-          icon: 'success',
-          text: '成功'
-        }
-      )
-    },
-    fail () {
-      this.$swal(
-        {
-          title: '訊息',
-          icon: 'warning',
-          text: '警告'
-        }
-      )
-    },
     logout (event) {
       event.preventDefault()
 
