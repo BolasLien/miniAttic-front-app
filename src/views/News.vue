@@ -12,16 +12,16 @@
       </b-breadcrumb>
     </b-container>
     <b-container>
-      <b-row>
-        <b-col lg="6" sm="12">
-          <BannerBox text="you know!" src="https://picsum.photos/800/600/?image=20" to="/"></BannerBox>
+      <b-row v-for="post in posts" :key="post.item" class="post-item">
+        <b-col lg="4" sm="12">
+          <img :src="post.img" style="width: 100%;">
         </b-col>
-        <b-col lg="6" sm="12" class="text-left">
-          <h6>最新消息</h6>
-          <h3>打造用戶上癮的遊戲化行銷策略！看星巴克如何遊戲化行銷，提升購物體驗</h3>
-          <h4>在現在的時代下，不論是大人或小孩都喜歡玩遊戲，更可能會在遊戲中撒大錢買東西，似乎遊戲就有種令人上癮的吸引力。「遊戲化（Gamification）行銷」就是利用遊戲令人上癮的元素，套用在行銷手法上，讓用戶對你的商品行銷活動上鉤，甚至玩到欲罷不能！</h4>
+        <b-col lg="8" sm="12" class="text-left">
+          <h6>{{post.tag}}</h6>
+          <h3>{{post.title}}</h3>
+          <p v-html="post.article"></p>
           <hr>
-          <h5>2020年7月8日</h5>
+          <h5>{{post.date}}</h5>
         </b-col>
       </b-row>
       <hr>
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import BannerBox from '@/components/BannerBox.vue'
 export default {
   props: {
     webdata: Object
@@ -39,10 +38,33 @@ export default {
   name: 'News',
   data () {
     return {
+      posts: [
+        {
+          item: 1,
+          img: 'http://220.128.133.15/s1090109/miniattic/assets/img/post/1.jpg',
+          title: '布朗尼「們」出發了👏👏👏',
+          article: '明天是一個特別的日子，我們趕在今天內把新鮮現做的布朗尼送到樓主們的手中，讓各位嚐嚐我們的厲害😏。<br>祝全天下的媽媽母親節快樂👩🎁🎉',
+          date: '2020年5月9日',
+          tag: '小閣樓點滴'
+        },
+        {
+          item: 2,
+          img: 'http://220.128.133.15/s1090109/miniattic/assets/img/post/2.jpg',
+          title: '小閣樓三個月快樂🥳🎉',
+          article: '默默的也成立了三個月了，這個過程中，很感謝有很多親友的支持，我們才可以走到今天。<br>當然如果只是現階段就滿足了，小閣樓的成長可能就停滯了。所以，我們每個禮拜都在出爐新甜點、試吃新甜點。<br>體重會證明我們真的很努力😭',
+          date: '2020年5月3日',
+          tag: '小閣樓點滴'
+        },
+        {
+          item: 3,
+          img: 'http://220.128.133.15/s1090109/miniattic/assets/img/post/3.jpg',
+          title: '每一次出爐都是一種祝福',
+          article: '烤箱打開的那一剎那，總會想著這一次的布朗尼又會去哪裡旅行呢⋯⋯',
+          date: '2020年4月19日',
+          tag: '小閣樓點滴'
+        }
+      ]
     }
-  },
-  components: {
-    BannerBox
   }
 }
 </script>
