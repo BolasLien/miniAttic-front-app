@@ -33,7 +33,7 @@
             <font-awesome-icon :icon="['fas','sign-in-alt']" size="lg"></font-awesome-icon>
             <span class="hidden-md">登入</span>
           </router-link>
-          <a to="/" v-else @click="logout">
+          <a href="#" v-else @click="logout">
             <font-awesome-icon :icon="['fas','sign-out-alt']" size="lg"></font-awesome-icon>
             <span class="hidden-md">登出</span>
           </a>
