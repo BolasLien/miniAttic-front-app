@@ -1,19 +1,23 @@
-# my-page
+# 小閣樓網路商店
+[DEMO](https://bolaslien.github.io/miniAttic-front-app/)
 
-## Project setup
-```
-npm install
-```
+## 前台
+### 相關連結
+[前台](https://github.com/BolasLien/my-page)
+[管理系統](https://github.com/BolasLien/miniAttic-back-app)
+[Server](https://github.com/BolasLien/miniAttic-api-server)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 開發工具、部屬環境
+- Vue Cli
+- BootstrapVue
+- Axios
+- 前台放Github，使用Travis CI自動打包工具
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 網站截圖
+#### 網站首頁
+![](https://i.imgur.com/FVJyRdt.jpg)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### 商店
+![](https://i.imgur.com/aRQsodi.png)
+#### 購物車
+![](https://i.imgur.com/FqJsaLW.png)
