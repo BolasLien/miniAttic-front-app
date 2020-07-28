@@ -14,10 +14,11 @@
     <b-container>
       <b-row v-for="post in posts" :key="post.item" class="post-item">
         <b-col lg="4" sm="12">
-          <img :src="post.img" style="width: 100%;">
+          <img :src="post.img" />
         </b-col>
-        <b-col lg="8" sm="12" class="text-left">
-          <h6>{{post.tag}}</h6>
+        <b-col lg="6" sm="12" class="text-left mt-3">
+          <h6>#{{post.tag}}</h6>
+          <hr>
           <h3>{{post.title}}</h3>
           <p v-html="post.article"></p>
           <hr>

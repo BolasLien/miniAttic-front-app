@@ -16,7 +16,7 @@
         </b-col>
         <b-col sm="6">
           <b-row class="product" v-for="product in data.products" :key="product.item">
-            <b-col sm="3"><b-img width="60" :src="product.src"></b-img></b-col>
+            <b-col sm="3"><b-img center width="60" :src="product.src"></b-img></b-col>
             <b-col sm="3">{{product.name}}</b-col>
             <b-col sm="2">{{product.amount}}</b-col>
             <b-col sm="3">

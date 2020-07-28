@@ -10,7 +10,7 @@
             </b-row>
             <b-row class="item" v-for="data in shoppigList" :key="data.item">
               <b-col sm="3">
-                <b-img width="120" :src="data.src"></b-img>
+                <b-img center  width="120" :src="data.src"></b-img>
               </b-col>
               <b-col sm="3">{{data.name}}</b-col>
               <b-col sm="2">
@@ -59,7 +59,7 @@
 
             <b-row class="item" v-for="data in shoppigList" :key="data.item">
               <b-col sm="3">
-                <b-img width="80" :src="data.src"></b-img>
+                <b-img center width="80" :src="data.src"></b-img>
               </b-col>
               <b-col sm="3">{{data.name}}</b-col>
               <b-col sm="2">{{data.amount}}</b-col>
