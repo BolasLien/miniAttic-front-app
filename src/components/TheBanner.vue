@@ -7,7 +7,6 @@
             <h4 class>{{title}}</h4>
             <h5>{{subtitle}}</h5>
             <router-link :to="to">{{buttontext}}</router-link>
-            <!-- <a :href="url" title="CLASSIC"></a> -->
           </hgroup>
           <div
             class="bg-item"
@@ -38,6 +37,7 @@ export default {
 </script>
 
 <style>
+
 .fixed-banner-wrap .wrap .bg-item {
   position: absolute;
   top: 0;
@@ -87,7 +87,7 @@ export default {
     background-color: rgba(2555,255,255,.2);
     box-shadow: 0 0 1.6em rgba(0,0,0,.16);
     border: 1px solid #fff;
-    color: inherit;
+    color: #faf9f9 !important;
     transition: .3s linear all;
 }
 </style>
