@@ -60,8 +60,6 @@ $secondaryColor: #89b0ae;
       margin: 1rem auto;
     }
 
-
-    
     border-top: 1px solid #eee;
     background: #faf9f9;
     position: absolute;
@@ -78,6 +76,12 @@ $secondaryColor: #89b0ae;
     color: $secondaryColor;
     text-decoration: none;
   }
+
+  img {
+  display: block;
+  max-width: 100%;
+}
+
 
   .breadcrumb {
     background-color: transparent;
@@ -311,7 +315,15 @@ $secondaryColor: #89b0ae;
     max-width: 100%;
   }
 
-  text-align: left;
+  // text-align: left;
+
+  .step-item{
+    color: #555b6e;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 #login,
@@ -480,5 +492,15 @@ $secondaryColor: #89b0ae;
   .post-item {
     margin-bottom: 3rem;
     margin-top: 3rem;
+    justify-content: center;
+  }
+}
+
+#about{
+  .about-item{
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
   }
 }
