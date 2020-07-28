@@ -15,7 +15,7 @@ import './style/style.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
-import { faShoppingCart, faUser, faSignInAlt, faPlus, faMinus, faSignOutAlt, faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faUser, faSignInAlt, faPlus, faMinus, faSignOutAlt, faListAlt, faTruck, faReceipt, faThumbsUp, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 // vue axios
 import axios from 'axios'
@@ -37,7 +37,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
-library.add(faInstagram, faShoppingCart, faUser, faSignInAlt, faPlus, faMinus, faFacebookSquare, faSignOutAlt, faListAlt)
+library.add(faInstagram, faShoppingCart, faUser, faSignInAlt, faPlus, faMinus, faFacebookSquare, faSignOutAlt, faListAlt, faTruck, faReceipt, faThumbsUp, faCheck)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 axios.defaults.withCredentials = true
