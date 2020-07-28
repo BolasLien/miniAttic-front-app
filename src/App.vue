@@ -3,7 +3,9 @@
     <!-- Navbar -->
     <Navbar></Navbar>
     <!-- views的頁面 -->
-    <router-view v-if="isRouterAlive" :webdata="webdata"/>
+    <div id="contant">
+    <router-view v-if="isRouterAlive" :webdata="webdata" />
+    </div>
     <!-- Footer -->
     <Footer></Footer>
   </div>

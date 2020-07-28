@@ -24,7 +24,6 @@
           <h5>{{post.date}}</h5>
         </b-col>
       </b-row>
-      <hr>
     </b-container>
 
   </div>
