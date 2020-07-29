@@ -6,7 +6,7 @@ body {
 $mainColor: #555b6e;
 $secondaryColor: #89b0ae;
 
-// 斷點
+// 尺寸以下隱藏
 @media (max-width: 575.98px) {
   .hidden-sm {
     display: none !important;
@@ -30,6 +30,7 @@ $secondaryColor: #89b0ae;
     display: none !important;
   }
 }
+
 
 .swal2-popup {
   border-radius: 0 !important;
@@ -208,7 +209,7 @@ $secondaryColor: #89b0ae;
   .shop-box ul > li {
     padding-left: 0.5rem;
     text-align: left;
-    text-indent: -1rem;
+    // text-indent: -.5rem;
     margin: 0 0 1.4em 0;
     line-height: 1;
   }
@@ -366,10 +367,6 @@ $secondaryColor: #89b0ae;
 }
 
 #cart {
-  .quantity {
-    justify-content: center;
-  }
-
   .btn-remove {
     border-radius: 0;
     text-align: center;
@@ -449,6 +446,28 @@ $secondaryColor: #89b0ae;
     &:hover {
       background-color: #faf9f9 !important;
       color: #aa1c20 !important;
+    }
+  }
+
+  .detail{
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quantity{
+    justify-content: center;
+  }
+
+  @media (max-width: 576px) {
+    .detail{
+      padding-right: .5rem;
+      align-items: center;
+      justify-content: start;
+      text-align: left;
+    }
+
+    .quantity{
+      justify-content: start;
     }
   }
 }
