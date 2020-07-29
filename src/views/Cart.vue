@@ -6,22 +6,26 @@
         <tab-content :title="steps[0]">
           <b-container class="cart">
             <b-row class="head">
-              <b-col sm="12">以下是您選購的商品</b-col>
+              <b-col md="12">以下是您選購的商品</b-col>
             </b-row>
             <b-row class="item" v-for="data in shoppigList" :key="data.item">
-              <b-col sm="3">
-                <b-img center  width="120" :src="data.src"></b-img>
+              <b-col md="3" cols="5">
+                <b-img center width="120" :src="data.src"></b-img>
               </b-col>
-              <b-col sm="3">{{data.name}}</b-col>
-              <b-col sm="2">
-                <quantity v-model="data.amount" @update="update(data)"></quantity>
-              </b-col>
-              <b-col sm="3">
-                <small>NT$&ensp;</small>
-                {{data.price * data.amount}}
-              </b-col>
-              <b-col sm="1">
-                <button class="btn btn-remove" @click="remove(data)">X</button>
+              <b-col md="9" cols="7">
+                <b-row class="detail no-gutters">
+                  <b-col md="4" cols="11" order-md="2" order="1">{{data.name}}</b-col>
+                  <b-col md="3" cols="12" order-md="3" order="4">
+                    <quantity v-model="data.amount" @update="update(data)"></quantity>
+                  </b-col>
+                  <b-col class="pt-2 pb-2" md="3" cols="12" order-md="4" order="3">
+                    <small>NT$&ensp;</small>
+                    {{data.price * data.amount}}
+                  </b-col>
+                  <b-col md="1" cols="1" order-md="5" order="2">
+                    <button class="btn btn-remove" @click="remove(data)">X</button>
+                  </b-col>
+                </b-row>
               </b-col>
             </b-row>
           </b-container>
@@ -29,11 +33,11 @@
         <tab-content :title="steps[1]">
           <b-container class="payment">
             <b-row class="head">
-              <b-col sm="12">請選擇您的付款方式</b-col>
+              <b-col md="12">請選擇您的付款方式</b-col>
             </b-row>
 
             <b-row class="item" v-for="data in payments" :key="data.item">
-              <b-col sm="3" class="text-right">
+              <b-col md="3" class="text-right">
                 <input
                   type="radio"
                   name="payment"
@@ -41,49 +45,52 @@
                   :checked="data.selected"
                 />
               </b-col>
-              <b-col sm="3">{{data.name}}</b-col>
-              <b-col sm="2">{{data.description}}</b-col>
-              <b-col sm="3">
+              <b-col md="3">{{data.name}}</b-col>
+              <b-col md="2">{{data.description}}</b-col>
+              <b-col md="3">
                 <small>+NT$&ensp;</small>
                 {{data.price}}
               </b-col>
-              <b-col sm="1"></b-col>
+              <b-col md="1"></b-col>
             </b-row>
           </b-container>
         </tab-content>
         <tab-content :title="steps[2]">
           <b-container class="order">
             <b-row class="head">
-              <b-col sm="12">請確認您的訂單</b-col>
+              <b-col md="12">請確認您的訂單</b-col>
             </b-row>
-
             <b-row class="item" v-for="data in shoppigList" :key="data.item">
-              <b-col sm="3">
+              <b-col md="3" cols="5">
                 <b-img center width="80" :src="data.src"></b-img>
               </b-col>
-              <b-col sm="3">{{data.name}}</b-col>
-              <b-col sm="2">{{data.amount}}</b-col>
-              <b-col sm="3">
-                <small>NT$&ensp;</small>
-                {{data.price * data.amount}}
+              <b-col md="9" cols="7">
+                <b-row class="detail no-gutters">
+                  <b-col md="4" cols="12">{{data.name}}</b-col>
+                  <b-col md="4" cols="12">x{{data.amount}}</b-col>
+                  <b-col md="2" cols="12">
+                    <small>NT$&ensp;</small>
+                    {{data.price * data.amount}}
+                  </b-col>
+                  <b-col md="2"></b-col>
+                </b-row>
               </b-col>
-              <b-col sm="1"></b-col>
             </b-row>
 
             <b-row class="item">
-              <b-col sm="3">付款及運送方式</b-col>
-              <b-col sm="3">{{payment.name}}</b-col>
-              <b-col sm="2">{{payment.description}}</b-col>
-              <b-col sm="3">
+              <b-col md="3">付款及運送方式</b-col>
+              <b-col md="3">{{payment.name}}</b-col>
+              <b-col md="2">{{payment.description}}</b-col>
+              <b-col md="3">
                 <small>NT$&ensp;</small>
                 {{payment.price}}
               </b-col>
-              <b-col sm="1"></b-col>
+              <b-col md="1"></b-col>
             </b-row>
             <!-- 輸入備註 -->
             <b-row class="item">
-              <b-col sm="5">有甚麼想告訴我們的嗎?</b-col>
-              <b-col sm="7">
+              <b-col md="5">有甚麼想告訴我們的嗎?</b-col>
+              <b-col md="7">
                 <b-form-textarea
                   id="textarea"
                   v-model="remark"
@@ -97,23 +104,27 @@
         </tab-content>
         <b-container>
           <b-row class="justify-content-end mt-4 cart-footer">
-            <b-col sm="2">共&ensp;{{ totalAmount}}&ensp;件商品</b-col>
-            <b-col sm="2" class="text-right">商品金額</b-col>
-            <b-col sm="2" class="text-left">
+            <b-col md="2" cols="12" class="text-center mb-4">共&ensp;{{ totalAmount}}&ensp;件商品</b-col>
+            <b-col md="2" cols="6" class="text-right">商品金額</b-col>
+            <b-col md="2" cols="6" class="text-left">
               <small>NT$&ensp;</small>
               {{ totalPrice }}
             </b-col>
           </b-row>
           <b-row class="justify-content-end mt-4 cart-footer">
-            <b-col sm="2" class="text-right">運費</b-col>
-            <b-col sm="2" class="text-left">
+            <b-col md="2" cols="6" class="text-right">運費</b-col>
+            <b-col md="2" cols="6" class="text-left">
               <small>NT$&ensp;</small>
               {{ payment.price }}
             </b-col>
           </b-row>
           <b-row class="justify-content-end mt-4 mb-4 cart-footer">
-            <b-col sm="2" class="text-right payable">應付金額</b-col>
-            <b-col sm="2" class="text-left payable">NT$&ensp; {{ totalPrice+payment.price }}</b-col>
+            <b-col md="2" cols="6" class="text-right payable">應付金額</b-col>
+            <b-col
+              md="2"
+              cols="6"
+              class="text-left payable"
+            >NT$&ensp; {{ totalPrice+payment.price }}</b-col>
           </b-row>
         </b-container>
 

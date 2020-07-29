@@ -16,10 +16,10 @@
       <!-- 訂購流程 -->
       <div class="mt-4">
         <b-row class="step-item" v-for="(item, index) in steps" :key="index">
-          <b-col lg="3" sm="12">
+          <b-col md="3" sm="12">
             <font-awesome-icon :icon="item.icon" size="5x"></font-awesome-icon>
           </b-col>
-          <b-col lg="3" sm="12">
+          <b-col md="3" sm="12">
             <h6>step{{item.step}}</h6>
             <h5>{{item.text}}</h5>
           </b-col>

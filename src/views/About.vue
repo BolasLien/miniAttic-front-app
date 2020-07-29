@@ -15,10 +15,10 @@
     <!-- <b-container v-html="about"> -->
     <b-container>
       <b-row class="about-item" v-for="(post,index) in posts" :key="index">
-        <b-col lg="5" sm="12" :order-lg="index %2 === 0 ? 2:1" order-sm="1">
+        <b-col md="5" sm="12" :order-md="index %2 === 0 ? 2:1" order-sm="1">
           <img :src="post.img" />
         </b-col>
-        <b-col lg="5" sm="12" :order-lg="index %2 === 0 ? 1:2" order-sm="2">
+        <b-col md="5" sm="12" :order-md="index %2 === 0 ? 1:2" order-sm="2">
           <h4 class="mt-3">{{post.title}}</h4>
           <p>{{post.article}}</p>
         </b-col>
