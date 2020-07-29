@@ -43,15 +43,15 @@ export default {
     text-align: center;
     height: 2.6rem;
     box-sizing: border-box;
-  }
 
-  button:focus {
-    box-shadow: none;
-  }
+    &:focus {
+      box-shadow: none;
+    }
 
-  button:hover {
-    background-color: #555b6e;
-    color: #faf9f9;
+    &:hover {
+      background-color: #555b6e;
+      color: #faf9f9;
+    }
   }
 
   input {
@@ -63,10 +63,10 @@ export default {
     border-left: 0px;
     border-right: 0px;
     box-sizing: border-box;
-  }
 
-  input:focus {
-    outline: none;
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>
