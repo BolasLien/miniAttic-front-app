@@ -9,16 +9,16 @@
               <b-col md="12">以下是您選購的商品</b-col>
             </b-row>
             <b-row class="item" v-for="data in shoppigList" :key="data.item">
-              <b-col md="3" cols="5">
+              <b-col md="4" cols="5">
                 <b-img center width="120" :src="data.src"></b-img>
               </b-col>
-              <b-col md="9" cols="7">
+              <b-col md="8" cols="7">
                 <b-row class="detail no-gutters">
-                  <b-col md="4" cols="11" order-md="2" order="1">{{data.name}}</b-col>
+                  <b-col md="4" cols="11" order-md="2" order="1" class="text-left">{{data.name}}</b-col>
                   <b-col md="3" cols="12" order-md="3" order="4">
                     <quantity v-model="data.amount" @update="update(data)"></quantity>
                   </b-col>
-                  <b-col class="pt-2 pb-2" md="3" cols="12" order-md="4" order="3">
+                  <b-col class="pt-2 pb-2" md="4" cols="12" order-md="4" order="3">
                     <small>NT$&ensp;</small>
                     {{data.price * data.amount}}
                   </b-col>
@@ -37,21 +37,28 @@
             </b-row>
 
             <b-row class="item" v-for="data in payments" :key="data.item">
-              <b-col md="3" class="text-right">
+              <b-col md="3" cols="5">
+                <label :for="data.item"><b-img :src="require('../assets/logo.png')" center width="120"></b-img></label>
                 <input
                   type="radio"
                   name="payment"
                   @input="paymentSelect(data)"
                   :checked="data.selected"
+                  :id="data.item"
                 />
               </b-col>
-              <b-col md="3">{{data.name}}</b-col>
-              <b-col md="2">{{data.description}}</b-col>
-              <b-col md="3">
-                <small>+NT$&ensp;</small>
-                {{data.price}}
+              <b-col md="9" cols="7">
+                <label :for="data.item">
+                  <b-row class="detail">
+                    <b-col md="4">{{data.name}}</b-col>
+                    <b-col md="4">{{data.description}}</b-col>
+                    <b-col md="3">
+                      <small>+NT$&ensp;</small>
+                      {{data.price}}
+                    </b-col>
+                  </b-row>
+                </label>
               </b-col>
-              <b-col md="1"></b-col>
             </b-row>
           </b-container>
         </tab-content>
@@ -61,31 +68,37 @@
               <b-col md="12">請確認您的訂單</b-col>
             </b-row>
             <b-row class="item" v-for="data in shoppigList" :key="data.item">
-              <b-col md="3" cols="5">
+              <b-col md="4" cols="5">
                 <b-img center width="80" :src="data.src"></b-img>
               </b-col>
-              <b-col md="9" cols="7">
+              <b-col md="8" cols="7">
                 <b-row class="detail no-gutters">
                   <b-col md="4" cols="12">{{data.name}}</b-col>
-                  <b-col md="4" cols="12">x{{data.amount}}</b-col>
-                  <b-col md="2" cols="12">
+                  <b-col md="3" cols="12">x{{data.amount}}</b-col>
+                  <b-col md="4" cols="12">
                     <small>NT$&ensp;</small>
                     {{data.price * data.amount}}
                   </b-col>
-                  <b-col md="2"></b-col>
+                  <b-col md="1"></b-col>
                 </b-row>
               </b-col>
             </b-row>
 
             <b-row class="item">
-              <b-col md="3">付款及運送方式</b-col>
-              <b-col md="3">{{payment.name}}</b-col>
-              <b-col md="2">{{payment.description}}</b-col>
-              <b-col md="3">
-                <small>NT$&ensp;</small>
-                {{payment.price}}
+              <b-col md="4" cols="5">
+                <b-img center width="80" :src="require('../assets/logo.png')"></b-img>
               </b-col>
-              <b-col md="1"></b-col>
+              <b-col md="8" cols="7">
+                <b-row class="detail no-gutters">
+                  <b-col md="4" cols="12">{{payment.name}}</b-col>
+                  <b-col md="3" cols="12">{{payment.description}}</b-col>
+                  <b-col md="4" cols="12">
+                    <small>NT$&ensp;</small>
+                    {{payment.price}}
+                  </b-col>
+                  <b-col md="1"></b-col>
+                </b-row>
+              </b-col>
             </b-row>
             <!-- 輸入備註 -->
             <b-row class="item">
@@ -170,6 +183,9 @@
 <script>
 import Quantity from '../components/Quantity'
 export default {
+  props: {
+    webdata: Object
+  },
   components: {
     quantity: Quantity
   },
@@ -181,28 +197,28 @@ export default {
         name: '面交付款',
         price: 0
       },
-      payments: [
-        {
-          item: 1,
-          name: '面交付款',
-          price: 0,
-          selected: true
-        },
-        {
-          item: 2,
-          name: '7-11取貨付款',
-          price: 60,
-          description: '部分商品不適用',
-          selected: false
-        },
-        {
-          item: 3,
-          name: '宅配貨到付款',
-          price: 120,
-          description: '皆使用低溫宅急便',
-          selected: false
-        }
-      ],
+      // payments: [
+      //   {
+      //     item: 1,
+      //     name: '面交付款',
+      //     price: 0,
+      //     selected: true
+      //   },
+      //   {
+      //     item: 2,
+      //     name: '7-11取貨付款',
+      //     price: 60,
+      //     description: '部分商品不適用',
+      //     selected: false
+      //   },
+      //   {
+      //     item: 3,
+      //     name: '宅配貨到付款',
+      //     price: 120,
+      //     description: '皆使用低溫宅急便',
+      //     selected: false
+      //   }
+      // ],
       paymentPrice: 0,
       remark: ''
     }
@@ -259,6 +275,10 @@ export default {
     }
   },
   computed: {
+    payments () {
+      console.log(this.webdata.payments)
+      return this.webdata.payments
+    },
     user () {
       return this.$store.getters.user
     },
@@ -294,9 +314,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-td {
-  border: 1px solid #000 !important;
-}
-</style>

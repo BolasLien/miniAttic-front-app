@@ -6,27 +6,45 @@
       </b-row>
 
       <b-row class="item" v-for="data in orders" :key="data.item">
-        <b-col md="2">
+        <b-col md="2" cols="6" order-md="1" order="1">
           訂單編號
           <br />
           {{data.item}}
         </b-col>
-        <b-col md="6">
-          <b-row class="product" v-for="product in data.products" :key="product.item">
+        <b-col md="6" cols="12" order-md="5" order="3">
+          <hr class="border">
+                      <b-row class="detail product" v-for="data in data.products" :key="data.item">
+              <b-col md="4" cols="6">
+                <b-img center width="100" :src="data.src"></b-img>
+              </b-col>
+              <b-col md="8" cols="6">
+                <b-row class="detail no-gutters">
+                  <b-col md="4" cols="12">{{data.name}}</b-col>
+                  <b-col md="3" cols="12">x{{data.amount}}</b-col>
+                  <b-col md="4" cols="12">
+                    <small>NT$&ensp;</small>
+                    {{data.price * data.amount}}
+                  </b-col>
+                  <b-col md="1"></b-col>
+                </b-row>
+              </b-col>
+            </b-row>
+            <hr class="border">
+          <!-- <b-row class="product" v-for="product in data.products" :key="product.item">
             <b-col md="3">
               <b-img center width="60" :src="product.src"></b-img>
             </b-col>
             <b-col md="3">{{product.name}}</b-col>
-            <b-col md="2">{{product.amount}}</b-col>
+            <b-col md="2">x{{product.amount}}</b-col>
             <b-col md="3">
               <small>NT$&ensp;</small>
               {{product.price * product.amount}}
             </b-col>
             <b-col md="1"></b-col>
-          </b-row>
+          </b-row> -->
         </b-col>
-        <b-col md="2">{{data.remark}}</b-col>
-        <b-col md="2">{{status[data.status]}}</b-col>
+        <b-col md="2" cols="6" order-md="5" order="4">{{data.remark}}</b-col>
+        <b-col md="2" cols="6" order-md="5" order="2">{{status[data.status]}}</b-col>
       </b-row>
     </b-container>
     <b-container v-else>

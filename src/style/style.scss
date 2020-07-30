@@ -31,7 +31,6 @@ $secondaryColor: #89b0ae;
   }
 }
 
-
 .swal2-popup {
   border-radius: 0 !important;
 }
@@ -46,7 +45,6 @@ $secondaryColor: #89b0ae;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $mainColor;
-
 
   position: relative;
   min-height: 100vh;
@@ -79,10 +77,9 @@ $secondaryColor: #89b0ae;
   }
 
   img {
-  display: block;
-  max-width: 100%;
-}
-
+    display: block;
+    max-width: 100%;
+  }
 
   .breadcrumb {
     background-color: transparent;
@@ -318,7 +315,7 @@ $secondaryColor: #89b0ae;
 
   // text-align: left;
 
-  .step-item{
+  .step-item {
     color: #555b6e;
     margin-bottom: 3rem;
     margin-top: 3rem;
@@ -367,6 +364,11 @@ $secondaryColor: #89b0ae;
 }
 
 #cart {
+  label {
+    display: block;
+    cursor: pointer;
+  }
+
   .btn-remove {
     border-radius: 0;
     text-align: center;
@@ -449,24 +451,24 @@ $secondaryColor: #89b0ae;
     }
   }
 
-  .detail{
+  .detail {
     align-items: center;
     justify-content: center;
   }
 
-  .quantity{
+  .quantity {
     justify-content: center;
   }
 
-  @media (max-width: 576px) {
-    .detail{
-      padding-right: .5rem;
+  @media (max-width: 767.98px) {
+    .detail {
+      padding-right: 0.5rem;
       align-items: center;
       justify-content: start;
       text-align: left;
     }
 
-    .quantity{
+    .quantity {
       justify-content: start;
     }
   }
@@ -505,6 +507,20 @@ $secondaryColor: #89b0ae;
     justify-content: center;
     align-items: center;
   }
+
+  .border {
+    display: none;
+  }
+
+  @media (max-width: 767.98px) {
+    .detail {
+      text-align: left;
+    }
+
+    .border {
+      display: block;
+    }
+  }
 }
 
 #news {
@@ -515,8 +531,8 @@ $secondaryColor: #89b0ae;
   }
 }
 
-#about{
-  .about-item{
+#about {
+  .about-item {
     margin-bottom: 3rem;
     margin-top: 3rem;
     align-items: center;
