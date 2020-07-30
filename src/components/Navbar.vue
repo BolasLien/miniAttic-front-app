@@ -14,8 +14,7 @@
         </b-col>
         <b-col class="logo" cols="4">
           <router-link to="/">
-            <h1>小閣樓</h1>
-            <h5>miniAttic</h5>
+            <b-img :src="require('../assets/logo.png')" width="100" center></b-img>
           </router-link>
         </b-col>
         <b-col class="login" cols="4">
