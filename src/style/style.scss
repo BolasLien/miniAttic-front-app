@@ -475,8 +475,9 @@ $secondaryColor: #89b0ae;
 }
 
 #order {
+  // font-size: 14px;
   .head {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     justify-content: center;
@@ -513,14 +514,20 @@ $secondaryColor: #89b0ae;
   }
 
   @media (max-width: 767.98px) {
-    .detail {
-      text-align: left;
-    }
+
+    // .detail {
+    //   text-align: left;
+    // }
 
     .border {
       display: block;
     }
+
+    .bv-d-xl-down-none{
+      display: block !important;
+    }
   }
+
 }
 
 #news {
@@ -537,5 +544,78 @@ $secondaryColor: #89b0ae;
     margin-top: 3rem;
     align-items: center;
     justify-content: center;
+  }
+}
+
+#order-detail{
+  .head {
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #aa1c20;
+    color: #faf9f9;
+  }
+
+  .item {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 1px solid #b09999;
+    border-left: 1px solid #b09999;
+    border-right: 1px solid #b09999;
+
+    &:last-child {
+      border-bottom: 1px solid #b09999;
+      margin-bottom: 2rem;
+    }
+  }
+  .product {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .border {
+    display: none;
+  }
+
+  @media (max-width: 767.98px) {
+    .detail {
+      text-align: left;
+    }
+
+    .border {
+      display: block;
+    }
+
+  }
+
+  .payable {
+    border-top: 1px solid #b09999;
+    color: #aa1c20;
+  }
+
+  button {
+    // width: 100%;
+    margin-bottom: 1rem;
+    background-color: #aa1c20;
+    color: #faf9f9;
+    border-radius: 0;
+    text-align: center;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      border: 1px solid #aa1c20;
+      background-color: #faf9f9;
+      color: #aa1c20;
+    }
   }
 }

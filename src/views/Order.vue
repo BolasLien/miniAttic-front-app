@@ -1,49 +1,45 @@
 <template>
   <div id="order">
     <b-container v-if="orders.length > 0">
-      <b-row class="head">
-        <b-col md="12">{{ user }}您好，以下是您的訂單</b-col>
+      <div class="mt-2">
+                {{ user }}您好，以下是您的訂單
+      </div>
+      <b-row class="head hidden-md">
+        <b-col md="3">訂單編號</b-col>
+        <b-col md="2">訂購日期</b-col>
+        <b-col md="2">付款方式</b-col>
+        <b-col md="2">訂單金額</b-col>
+        <b-col md="2">訂單進度</b-col>
       </b-row>
 
       <b-row class="item" v-for="data in orders" :key="data.item">
-        <b-col md="2" cols="6" order-md="1" order="1">
-          訂單編號
-          <br />
+        <b-col md="3" cols="6" order-md="1" order="1">
+          <router-link :to="'/order/' + data.item">
+          <font-awesome-icon :icon="['fas','list-alt']" size="lg"></font-awesome-icon>
           {{data.item}}
+          </router-link>
         </b-col>
-        <b-col md="6" cols="12" order-md="5" order="3">
-          <hr class="border">
-                      <b-row class="detail product" v-for="data in data.products" :key="data.item">
+        <b-col md="2" cols="6" class="hidden-md" order-md="2" order="2">{{getDate(data.item)}}</b-col>
+        <b-col md="6" cols="12" order-md="5" order="3" class="bv-d-xl-down-none">
+          <hr class="border" />
+          <router-link :to="'/order/' + data.item">
+            <b-row class="detail product">
               <b-col md="4" cols="6">
-                <b-img center width="100" :src="data.src"></b-img>
+                <b-img center width="100" :src="data.products[0].src"></b-img>
               </b-col>
               <b-col md="8" cols="6">
-                <b-row class="detail no-gutters">
-                  <b-col md="4" cols="12">{{data.name}}</b-col>
-                  <b-col md="3" cols="12">x{{data.amount}}</b-col>
-                  <b-col md="4" cols="12">
-                    <small>NT$&ensp;</small>
-                    {{data.price * data.amount}}
-                  </b-col>
-                  <b-col md="1"></b-col>
-                </b-row>
+                <span class="bv-d-xl-down-none">共 {{totalAmount(data)}} 項商品</span>
               </b-col>
             </b-row>
-            <hr class="border">
-          <!-- <b-row class="product" v-for="product in data.products" :key="product.item">
-            <b-col md="3">
-              <b-img center width="60" :src="product.src"></b-img>
-            </b-col>
-            <b-col md="3">{{product.name}}</b-col>
-            <b-col md="2">x{{product.amount}}</b-col>
-            <b-col md="3">
-              <small>NT$&ensp;</small>
-              {{product.price * product.amount}}
-            </b-col>
-            <b-col md="1"></b-col>
-          </b-row> -->
+          </router-link>
+          <hr class="border" />
         </b-col>
-        <b-col md="2" cols="6" order-md="5" order="4">{{data.remark}}</b-col>
+        <b-col md="2" cols="6" order-md="5" order="4">{{data.payment.name}}</b-col>
+        <b-col md="2" cols="6" order-md="5" order="4">
+          <span class="bv-d-xl-down-none">訂單金額</span>
+          <small>NT$&ensp;</small>
+          {{totalPrice(data)}}
+        </b-col>
         <b-col md="2" cols="6" order-md="5" order="2">{{status[data.status]}}</b-col>
       </b-row>
     </b-container>
@@ -61,10 +57,33 @@
 
 <script>
 export default {
+  props: {
+    webdata: Object
+  },
   data () {
     return {
       orders: [],
-      status: ['訂單成立，尚未付款', '訂單已付款，待出貨', '出貨中', '已送達']
+      status: ['尚未付款', '待出貨', '出貨中', '已送達']
+    }
+  },
+  methods: {
+    getDate (dt) {
+      const date = new Date(parseInt(dt))
+      return date.toLocaleDateString()
+    },
+    totalPrice (d) {
+      let count = 0
+      for (const data of d.products) {
+        count += data.price * data.amount
+      }
+      return count + d.payment.price
+    },
+    totalAmount (d) {
+      return d.products
+        .map((e) => e.amount)
+        .reduce(function (prev, e) {
+          return prev + e
+        })
     }
   },
   computed: {
