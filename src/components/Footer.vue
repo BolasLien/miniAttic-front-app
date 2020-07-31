@@ -13,8 +13,8 @@
       </div>
     </b-container>
     <div class="copyright">
-      <h5>小閣樓私嚐手作 所有圖片皆來自於網路</h5>
-      <h6>Copyright © 2020</h6>
+      <p>小閣樓私嚐手作 所有圖片皆來自於網路</p>
+      <p style="font-size:14px;">Copyright © 2020</p>
       <!-- <h5>小閣樓私嚐手作版權所有</h5>
       <h6>Copyright © 2020 miniAttic All rights reserved</h6>-->
     </div>
