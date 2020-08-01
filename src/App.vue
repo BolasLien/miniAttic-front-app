@@ -82,18 +82,36 @@ export default {
     }
   },
   mounted () {
+    // 解決第三方cookies
+    let userPageView = parseInt(sessionStorage.getItem('userPageView'))
+
+    if (isNaN(userPageView)) {
+      sessionStorage.setItem('userPageView', 1)
+    } else {
+      sessionStorage.setItem('userPageView', userPageView + 1)
+    }
+
+    userPageView = parseInt(sessionStorage.getItem('userPageView'))
+
+    if (userPageView === 1) {
+      window.location.href = process.env.VUE_APP_API + '/redirect'
+    }
+
+    if (userPageView > 1) {
+      this.axios.get(process.env.VUE_APP_API + '/webdata')
+        .then(response => {
+          this.webdata = response.data
+          this.reload()
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+
     this.heartbeat()
     setInterval(() => {
       this.heartbeat()
     }, 1000 * 5)
-    this.axios.get(process.env.VUE_APP_API + '/webdata')
-      .then(response => {
-        this.webdata = response.data
-        this.reload()
-      })
-      .catch(error => {
-        console.log(error)
-      })
   }
 }
 </script>
