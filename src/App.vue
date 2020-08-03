@@ -94,7 +94,7 @@ export default {
     userPageView = parseInt(sessionStorage.getItem('userPageView'))
 
     if (userPageView === 1) {
-      window.location.href = process.env.VUE_APP_API + '/redirect'
+      window.location.href = process.env.VUE_APP_API + '/'
     }
 
     if (userPageView > 1) {
