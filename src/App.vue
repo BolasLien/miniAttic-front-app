@@ -83,30 +83,39 @@ export default {
   },
   mounted () {
     // 解決第三方cookies
-    let userPageView = parseInt(sessionStorage.getItem('userPageView'))
+    // let userPageView = parseInt(sessionStorage.getItem('userPageView'))
 
-    if (isNaN(userPageView)) {
-      sessionStorage.setItem('userPageView', 1)
-    } else {
-      sessionStorage.setItem('userPageView', userPageView + 1)
-    }
+    // if (isNaN(userPageView)) {
+    //   sessionStorage.setItem('userPageView', 1)
+    // } else {
+    //   sessionStorage.setItem('userPageView', userPageView + 1)
+    // }
 
-    userPageView = parseInt(sessionStorage.getItem('userPageView'))
+    // userPageView = parseInt(sessionStorage.getItem('userPageView'))
 
-    if (userPageView === 1) {
-      window.location.href = process.env.VUE_APP_API + '/'
-    }
+    // if (userPageView === 1) {
+    //   window.location.href = process.env.VUE_APP_API + '/'
+    // }
 
-    if (userPageView > 1) {
-      this.axios.get(process.env.VUE_APP_API + '/webdata')
-        .then(response => {
-          this.webdata = response.data
-          this.reload()
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }
+    // if (userPageView > 1) {
+    //   this.axios.get(process.env.VUE_APP_API + '/webdata')
+    //     .then(response => {
+    //       this.webdata = response.data
+    //       this.reload()
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //     })
+    // }
+
+    this.axios.get(process.env.VUE_APP_API + '/webdata')
+      .then(response => {
+        this.webdata = response.data
+        this.reload()
+      })
+      .catch(error => {
+        console.log(error)
+      })
 
     this.heartbeat()
     setInterval(() => {
