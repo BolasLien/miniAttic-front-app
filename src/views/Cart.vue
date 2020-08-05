@@ -267,7 +267,19 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error)
+          if (error.response.data.message) {
+            this.$swal({
+              title: '訊息',
+              text: error.response.data.message,
+              icon: 'error',
+              timer: 2000,
+              timerProgressBar: true
+            }).then(() => {
+              this.$router.push('/login')
+            })
+          } else {
+            console.log(error)
+          }
         })
     },
     paymentSelect (data) {
@@ -276,7 +288,6 @@ export default {
   },
   computed: {
     payments () {
-      console.log(this.webdata.payments)
       return this.webdata.payments
     },
     user () {
