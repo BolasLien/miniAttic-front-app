@@ -3,8 +3,8 @@
     <!-- 麵包屑 -->
     <b-container>
       <b-breadcrumb>
-        <b-breadcrumb-item href="/">
-          <b-icon icon="house-fill" scale="1.25" shift-v="1.25"></b-icon>
+        <b-breadcrumb-item>
+          <router-link to="/"><b-icon icon="house-fill" scale="1.25" shift-v="1.25"></b-icon></router-link>
         </b-breadcrumb-item>
         <b-breadcrumb-item>
           <router-link to="Faq">購買流程</router-link>
