@@ -97,6 +97,11 @@ export default {
       .then((response) => {
         if (response.data.datas.length > 0) {
           this.orders = response.data.datas
+          for (const order of this.orders) {
+            for (const product of order.products) {
+              product.src = process.env.VUE_APP_API + '/image/' + product.src
+            }
+          }
         }
       })
       .catch((error) => {

@@ -108,6 +108,7 @@ export default {
       .then((response) => {
         if (response.data.datas.length > 0) {
           this.data = response.data.datas[0]
+          this.data.products.map(e => { e.src = process.env.VUE_APP_API + '/image/' + e.src })
           this.isLoading = true
         }
       })
