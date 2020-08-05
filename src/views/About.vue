@@ -3,7 +3,7 @@
     <!-- 麵包屑 -->
     <b-container>
       <b-breadcrumb>
-        <b-breadcrumb-item href="/">
+        <b-breadcrumb-item to="/">
           <b-icon icon="house-fill" scale="1.25" shift-v="1.25"></b-icon>
         </b-breadcrumb-item>
         <b-breadcrumb-item>
