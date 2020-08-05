@@ -79,6 +79,19 @@ export default {
             }
           })
         })
+    },
+    getWebData () {
+      this.axios.get(process.env.VUE_APP_API + '/webdata')
+        .then(response => {
+          this.webdata = response.data
+          this.webdata.pages.map(e => { e.src = process.env.VUE_APP_API + '/image/' + e.src })
+          this.webdata.products.map(e => { e.src = process.env.VUE_APP_API + '/image/' + e.src })
+
+          this.reload()
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
   mounted () {
@@ -108,19 +121,12 @@ export default {
     //     })
     // }
 
-    this.axios.get(process.env.VUE_APP_API + '/webdata')
-      .then(response => {
-        this.webdata = response.data
-        this.reload()
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    this.getWebData()
 
-    this.heartbeat()
-    setInterval(() => {
-      this.heartbeat()
-    }, 1000 * 5)
+    // this.heartbeat()
+    // setInterval(() => {
+    //   this.heartbeat()
+    // }, 1000 * 5)
   }
 }
 </script>
