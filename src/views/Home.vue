@@ -54,11 +54,12 @@
     <!-- 品牌故事 -->
     <b-container class="mt-3 mb-3 story">
       <Heading :title="miniaboutTitle.description1" :subtitle="miniaboutTitle.description2"></Heading>
-      <b-row no-gutters v-for="(item,index) in miniabouts" :key="index">
+      <b-row no-gutters v-for="(item,index) in miniabouts" :key="index" class=" justify-content-center align-items-center">
         <b-col md="6" class="story-image">
           <img :src="item.src" />
         </b-col>
         <b-col md="6" class="story-description">
+          <h4>miniAttic</h4>
           <p class="mr-3 ml-3">{{item.description1}}</p>
         </b-col>
       </b-row>
@@ -78,21 +79,19 @@
       <Heading :title="minirecommendTitle.description1" :subtitle="minirecommendTitle.description2"></Heading>
       <b-row>
         <b-col md="4" class="mt-3 mb-3">
-          <BannerBox to="/" src="https://picsum.photos/800/600/?image=39" text="熱熱吃更好吃"></BannerBox>
+          <b-img src="https://picsum.photos/150/150/?image=39" rounded="circle" center></b-img>
+          <h4 class="mt-4">高雄 - 連先生</h4>
+          <p>「推薦再回烤箱烤2分鐘，熱熱吃更好吃」</p>
         </b-col>
         <b-col md="4" class="mt-3 mb-3">
-          <BannerBox
-            to="/"
-            src="https://picsum.photos/800/600/?image=42"
-            text="第一次吃的時候驚為天人!後來就一直回購了!"
-          ></BannerBox>
+                    <b-img src="https://picsum.photos/150/150/?image=42" rounded="circle" center></b-img>
+          <h4 class="mt-4">新北 - 王小姐</h4>
+          <p>「第一次吃的時候驚為天人!後來就一直回購了!」</p>
         </b-col>
         <b-col md="4" class="mt-3 mb-3">
-          <BannerBox
-            to="/"
-            src="https://picsum.photos/800/600/?image=43"
-            text="咬下去的瞬間，巧克力的味道在口中擴散"
-          ></BannerBox>
+                    <b-img src="https://picsum.photos/150/150/?image=43" rounded="circle" center></b-img>
+          <h4 class="mt-4">東京 - 佐藤小姐</h4>
+          <p>「咬下去的瞬間，巧克力的味道在口中擴散」</p>
 
         </b-col>
       </b-row>
