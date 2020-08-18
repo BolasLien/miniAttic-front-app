@@ -89,11 +89,15 @@ export default {
   computed: {
     user () {
       return this.$store.getters.user
+    },
+    token () {
+      return this.$store.getters.token
     }
   },
   mounted () {
     this.axios
-      .get(process.env.VUE_APP_API + '/orders')
+      .get(process.env.VUE_APP_API + '/orders',
+        { headers: { Authorization: `Bearer ${this.token}` } })
       .then((response) => {
         if (response.data.datas.length > 0) {
           this.orders = response.data.datas
@@ -105,7 +109,20 @@ export default {
         }
       })
       .catch((error) => {
-        console.log(error)
+        if (error.response.data.message.includes('登入過期') || error.response.data.message.includes('Token異常')) {
+          this.$swal({
+            title: '訊息',
+            text: '請重新登入',
+            icon: 'error'
+          }).then(() => {
+            // 前端登出
+            this.$store.commit('logout')
+            // 如果現在不是在首頁，跳到登出後的首頁
+            this.$router.push('/login')
+          })
+        } else {
+          console.log(error)
+        }
       })
   }
 }

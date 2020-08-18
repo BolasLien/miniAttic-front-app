@@ -13,7 +13,8 @@ export default new Vuex.Store({
       totalPrice: 0,
       totalAmount: 0
     },
-    user: ''
+    user: '',
+    token: ''
   },
   mutations: {
     addProduct (state, data) {
@@ -118,10 +119,12 @@ export default new Vuex.Store({
       }
     },
     login (state, data) {
-      state.user = data
+      state.user = data.name
+      state.token = data.token
     },
     logout (state) {
       state.user = ''
+      state.token = ''
     }
   },
   actions: {
@@ -134,6 +137,9 @@ export default new Vuex.Store({
     },
     user (state) {
       return state.user
+    },
+    token (state) {
+      return state.token
     }
   }
 })

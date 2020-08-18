@@ -29,6 +29,9 @@ export default {
   computed: {
     user () {
       return this.$store.getters.user
+    },
+    token () {
+      return this.$store.getters.token
     }
   },
   methods: {
@@ -40,7 +43,8 @@ export default {
     },
     heartbeat () {
       this.axios
-        .get(process.env.VUE_APP_API + '/heartbeat')
+        .get(process.env.VUE_APP_API + '/heartbeat',
+          { headers: { Authorization: `Bearer ${this.token}` } })
         .then(response => {
           const data = response.data
 

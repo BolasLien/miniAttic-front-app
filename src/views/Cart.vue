@@ -197,28 +197,6 @@ export default {
         name: '面交付款',
         price: 0
       },
-      // payments: [
-      //   {
-      //     item: 1,
-      //     name: '面交付款',
-      //     price: 0,
-      //     selected: true
-      //   },
-      //   {
-      //     item: 2,
-      //     name: '7-11取貨付款',
-      //     price: 60,
-      //     description: '部分商品不適用',
-      //     selected: false
-      //   },
-      //   {
-      //     item: 3,
-      //     name: '宅配貨到付款',
-      //     price: 120,
-      //     description: '皆使用低溫宅急便',
-      //     selected: false
-      //   }
-      // ],
       paymentPrice: 0,
       remark: ''
     }
@@ -240,17 +218,19 @@ export default {
           timer: 2000,
           timerProgressBar: true
         }).then(() => {
-          this.$router.push('login')
+          this.$router.push('/login')
         })
         return
       }
 
       this.axios
-        .post(process.env.VUE_APP_API + '/order', {
-          products: this.order.products,
-          payment: this.order.payment,
-          remark: this.order.remark
-        })
+        .post(process.env.VUE_APP_API + '/order'
+          , {
+            products: this.order.products,
+            payment: this.order.payment,
+            remark: this.order.remark
+          },
+          { headers: { Authorization: `Bearer ${this.token}` } })
         .then((response) => {
           if (response.data.success) {
             this.$swal({
@@ -292,6 +272,9 @@ export default {
     },
     user () {
       return this.$store.getters.user
+    },
+    token () {
+      return this.$store.getters.token
     },
     shoppigList () {
       return this.$store.getters.cart.products

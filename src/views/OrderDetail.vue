@@ -100,11 +100,15 @@ export default {
         .reduce(function (prev, e) {
           return prev + e
         })
+    },
+    token () {
+      return this.$store.getters.token
     }
   },
   mounted () {
     this.axios
-      .get(process.env.VUE_APP_API + '/orderDetail/' + this.$route.params.id)
+      .get(process.env.VUE_APP_API + '/orderDetail/' + this.$route.params.id,
+        { headers: { Authorization: `Bearer ${this.token}` } })
       .then((response) => {
         if (response.data.datas.length > 0) {
           this.data = response.data.datas[0]

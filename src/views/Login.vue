@@ -91,7 +91,7 @@ export default {
               timerProgressBar: true
             }).then(() => {
               // 呼叫 vuex 的登入
-              this.$store.commit('login', data.name)
+              this.$store.commit('login', data)
               // 跳到登入後的首頁
               this.$router.push('/')
             })
