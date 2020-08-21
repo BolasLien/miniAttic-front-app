@@ -107,7 +107,7 @@ export default {
   },
   mounted () {
     this.axios
-      .get(process.env.VUE_APP_API + '/orderDetail/' + this.$route.params.id,
+      .get(process.env.VUE_APP_API + '/orders/' + this.$route.params.id,
         { headers: { Authorization: `Bearer ${this.token}` } })
       .then((response) => {
         if (response.data.datas.length > 0) {

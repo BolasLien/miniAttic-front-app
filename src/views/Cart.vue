@@ -224,7 +224,7 @@ export default {
       }
 
       this.axios
-        .post(process.env.VUE_APP_API + '/order'
+        .post(process.env.VUE_APP_API + '/orders'
           , {
             products: this.order.products,
             payment: this.order.payment,
