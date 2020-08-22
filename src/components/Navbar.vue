@@ -84,7 +84,7 @@ export default {
       event.preventDefault()
 
       this.axios
-        .delete(process.env.VUE_APP_API + '/logout')
+        .delete(process.env.VUE_APP_API + '/login')
         .then((response) => {
           const data = response.data
           // 如果回來的資料 success 是 true

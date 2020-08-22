@@ -38,7 +38,7 @@
         <b-col md="2" cols="6" order-md="5" order="4">
           <span class="bv-d-xl-down-none">訂單金額</span>
           <small>NT$&ensp;</small>
-          {{totalPrice(data)}}
+          {{data.orderPrice}}
         </b-col>
         <b-col md="2" cols="6" order-md="5" order="2">{{status[data.status]}}</b-col>
       </b-row>
@@ -70,13 +70,6 @@ export default {
     getDate (dt) {
       const date = new Date(parseInt(dt))
       return date.toLocaleDateString()
-    },
-    totalPrice (d) {
-      let count = 0
-      for (const data of d.products) {
-        count += data.price * data.amount
-      }
-      return count + d.payment.price
     },
     totalAmount (d) {
       return d.products
