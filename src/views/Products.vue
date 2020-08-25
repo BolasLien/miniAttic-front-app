@@ -119,18 +119,7 @@ export default {
         amount: this.quantity
       }
 
-      this.$swal(
-        {
-          toast: true,
-          position: 'top-end',
-          title: data.name + ' x ' + this.quantity,
-          text: '已加入購物車',
-          imageUrl: data.src,
-          imageWidth: 100,
-          timer: 1500,
-          showConfirmButton: false
-        }
-      )
+      this.$alert.TotasTopEnd(data.name + ' x ' + this.quantity, '已加入購物車', data.src)
       this.$store.commit('addProduct', product)
     }
   },

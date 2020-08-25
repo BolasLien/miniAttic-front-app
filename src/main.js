@@ -28,9 +28,9 @@ import VueGtag from 'vue-gtag'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
-// vue SweetAlert2
-import VueSweetalert2 from 'vue-sweetalert2'
-import 'sweetalert2/dist/sweetalert2.css'
+import alert from '@/api/alert.js'
+Vue.use(axios)
+Vue.use(alert)
 
 Vue.config.productionTip = false
 
@@ -48,11 +48,6 @@ Vue.use(VueGtag, {
 })
 
 Vue.use(VueFormWizard)
-
-const options = {
-  confirmButtonColor: '#555b6e'
-}
-Vue.use(VueSweetalert2, options)
 
 new Vue({
   router,

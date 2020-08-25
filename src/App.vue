@@ -50,13 +50,7 @@ export default {
 
           if (this.user.length > 0) {
             if (!data) {
-              this.$swal({
-                title: '訊息',
-                text: '長時間未操作，自動登出',
-                icon: 'error',
-                timer: 1000,
-                timerProgressBar: true
-              }).then(() => {
+              this.$alert.error('長時間未操作，自動登出').then(() => {
                 // 前端登出
                 this.$store.commit('logout')
                 // 如果現在不是在首頁，跳到登出後的首頁
@@ -68,14 +62,8 @@ export default {
           }
         })
         .catch(error => {
-          console.log(error)
-          this.$swal({
-            title: '訊息',
-            text: '發生錯誤',
-            icon: 'error',
-            timer: 1000,
-            timerProgressBar: true
-          }).then(() => {
+          this.$alert.error('發生錯誤').then(() => {
+            console.log(error)
             this.$store.commit('logout')
             // 如果現在不是在首頁，跳到登出後的首頁
             if (this.$route.path !== '/') {
@@ -99,38 +87,7 @@ export default {
     }
   },
   mounted () {
-    // 解決第三方cookies
-    // let userPageView = parseInt(sessionStorage.getItem('userPageView'))
-
-    // if (isNaN(userPageView)) {
-    //   sessionStorage.setItem('userPageView', 1)
-    // } else {
-    //   sessionStorage.setItem('userPageView', userPageView + 1)
-    // }
-
-    // userPageView = parseInt(sessionStorage.getItem('userPageView'))
-
-    // if (userPageView === 1) {
-    //   window.location.href = process.env.VUE_APP_API + '/'
-    // }
-
-    // if (userPageView > 1) {
-    //   this.axios.get(process.env.VUE_APP_API + '/webdata')
-    //     .then(response => {
-    //       this.webdata = response.data
-    //       this.reload()
-    //     })
-    //     .catch(error => {
-    //       console.log(error)
-    //     })
-    // }
-
     this.getWebData()
-
-    // this.heartbeat()
-    // setInterval(() => {
-    //   this.heartbeat()
-    // }, 1000 * 5)
   }
 }
 </script>

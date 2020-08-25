@@ -211,13 +211,7 @@ export default {
     },
     submit () {
       if (this.user.length === 0 || this.user === undefined) {
-        this.$swal({
-          title: '訊息',
-          text: '尚未登入喔',
-          icon: 'warning',
-          timer: 2000,
-          timerProgressBar: true
-        }).then(() => {
+        this.$alert.warning('尚未登入喔').then(() => {
           this.$router.push('/login')
         })
         return
@@ -233,13 +227,7 @@ export default {
           { headers: { Authorization: `Bearer ${this.token}` } })
         .then((response) => {
           if (response.data.success) {
-            this.$swal({
-              title: '訊息',
-              text: response.data.message,
-              icon: 'success',
-              timer: 2000,
-              timerProgressBar: true
-            }).then(() => {
+            this.$alert.success(response.data.message).then(() => {
               // 訂單送出後，把購物車清空
               this.$store.commit('clearCart')
               this.$router.push('order')
@@ -248,13 +236,7 @@ export default {
         })
         .catch((error) => {
           if (error.response.data.message) {
-            this.$swal({
-              title: '訊息',
-              text: error.response.data.message,
-              icon: 'error',
-              timer: 2000,
-              timerProgressBar: true
-            }).then(() => {
+            this.$alert.error(error.response.data.message).then(() => {
               this.$router.push('/login')
             })
           } else {

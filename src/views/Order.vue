@@ -102,12 +102,8 @@ export default {
         }
       })
       .catch((error) => {
-        if (error.response.data.message.includes('登入過期') || error.response.data.message.includes('Token異常')) {
-          this.$swal({
-            title: '訊息',
-            text: '請重新登入',
-            icon: 'error'
-          }).then(() => {
+        if (error.response.status === 400) {
+          this.$alert.error('請重新登入').then(() => {
             // 前端登出
             this.$store.commit('logout')
             // 如果現在不是在首頁，跳到登出後的首頁
