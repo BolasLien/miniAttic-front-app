@@ -44,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -56,70 +57,37 @@ export default {
       event.preventDefault()
 
       if (this.account.length === 0) {
-        this.$swal({
-          title: '訊息',
-          text: '請輸入帳號',
-          icon: 'warning',
-          timer: 2000,
-          timerProgressBar: true
-        })
+        this.$alert.warning('請輸入帳號')
         return
       } else if (this.password.length === 0) {
-        this.$swal({
-          title: '訊息',
-          text: '請輸入密碼',
-          icon: 'warning',
-          timer: 2000,
-          timerProgressBar: true
-        })
+        this.$alert.warning('請輸入密碼')
         return
       }
 
-      this.axios.post(
-        process.env.VUE_APP_API + '/login',
-        { account: this.account, password: this.password }
-      )
+      this.$axios.login(this.account, this.password)
         .then(response => {
           const data = response.data
-          if (data.success) {
-            // 如果回來的資料 success 是 true
-            this.$swal({
-              title: '訊息',
-              text: '登入成功',
-              icon: 'success',
-              timer: 2000,
-              timerProgressBar: true
-            }).then(() => {
-              // 呼叫 vuex 的登入
+          if (response.data.success) {
+          // // 如果回來的資料 success 是 true
+            this.$alert.success('登入成功').then(() => {
+            // 呼叫 vuex 的登入
               this.$store.commit('login', data)
               // 跳到登入後的首頁
               this.$router.push('/')
             })
           } else {
-            // 不是就顯示回來的 message
-            this.$swal({
-              title: '訊息',
-              text: data.message,
-              icon: 'error',
-              timer: 2000,
-              timerProgressBar: true
-            })
+          // 不是就顯示回來的 message
+            this.$alert.error(data.message)
           }
         })
-        .catch(error => {
-          // 如果回來的狀態不是 200，顯示回來的 message
-          if (error.response.data) {
-            this.$swal({
-              title: '訊息',
-              text: error.response.data.message,
-              icon: 'error',
-              timer: 2000,
-              timerProgressBar: true
-            })
-          } else {
-            console.log(error)
-          }
-        })
+      // .catch(error => {
+      //   // 如果回來的狀態不是 200，顯示回來的 message
+      //   if (error.response.data) {
+      //     this.$alert.error(error.response.data.message)
+      //   } else {
+      //     console.log(error)
+      //   }
+      // })
     }
   }
 }
