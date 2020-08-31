@@ -81,9 +81,6 @@ export default {
 
           this.reload()
         })
-        .catch(error => {
-          console.log(error)
-        })
     }
   },
   mounted () {
