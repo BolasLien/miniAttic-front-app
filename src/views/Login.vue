@@ -65,29 +65,6 @@ export default {
       }
 
       this.$axios.login(this.account, this.password)
-        .then(response => {
-          const data = response.data
-          if (response.data.success) {
-          // // 如果回來的資料 success 是 true
-            this.$alert.success('登入成功').then(() => {
-            // 呼叫 vuex 的登入
-              this.$store.commit('login', data)
-              // 跳到登入後的首頁
-              this.$router.push('/')
-            })
-          } else {
-          // 不是就顯示回來的 message
-            this.$alert.error(data.message)
-          }
-        })
-      // .catch(error => {
-      //   // 如果回來的狀態不是 200，顯示回來的 message
-      //   if (error.response.data) {
-      //     this.$alert.error(error.response.data.message)
-      //   } else {
-      //     console.log(error)
-      //   }
-      // })
     }
   }
 }

@@ -104,26 +104,7 @@ export default {
         return
       }
 
-      this.axios
-        .post(process.env.VUE_APP_API + '/users', {
-          name: this.name,
-          phone: this.phone,
-          account: this.account,
-          password: this.password
-        })
-        .then(response => {
-          if (response.data.success) {
-            this.$alert.success(response.data.message).then(() => {
-              this.$router.push('login')
-            })
-          }
-        })
-        .catch(error => {
-          if (error.response.data) {
-            this.$alert.error(error.response.data.message)
-          }
-          console.log(error)
-        })
+      this.$axios.reg(this.name, this.phone, this.account, this.password)
     }
   }
 }

@@ -88,31 +88,15 @@ export default {
     }
   },
   mounted () {
-    this.axios
-      .get(process.env.VUE_APP_API + '/orders',
-        { headers: { Authorization: `Bearer ${this.token}` } })
-      .then((response) => {
-        if (response.data.datas.length > 0) {
-          this.orders = response.data.datas
-          for (const order of this.orders) {
-            for (const product of order.products) {
-              product.src = process.env.VUE_APP_API + '/image/' + product.src
-            }
-          }
+    this.$axios.getOrders().then((response) => {
+      for (const order of response.data.datas) {
+        for (const product of order.products) {
+          product.src = process.env.VUE_APP_API + '/image/' + product.src
         }
-      })
-      .catch((error) => {
-        if (error.response.status === 400) {
-          this.$alert.error('請重新登入').then(() => {
-            // 前端登出
-            this.$store.commit('logout')
-            // 如果現在不是在首頁，跳到登出後的首頁
-            this.$router.push('/login')
-          })
-        } else {
-          console.log(error)
-        }
-      })
+      }
+
+      this.orders = response.data.datas
+    })
   }
 }
 </script>
