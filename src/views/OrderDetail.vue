@@ -106,9 +106,7 @@ export default {
     }
   },
   mounted () {
-    this.axios
-      .get(process.env.VUE_APP_API + '/orders/' + this.$route.params.id,
-        { headers: { Authorization: `Bearer ${this.token}` } })
+    this.$axios.getOrdersDetail(this.$route.params.id)
       .then((response) => {
         if (response.data.datas.length > 0) {
           this.data = response.data.datas[0]
@@ -116,9 +114,7 @@ export default {
           this.isLoading = true
         }
       })
-      .catch((error) => {
-        console.log(error)
-      })
+
     if (this.data === undefined) {
       this.$router.push('/NotFound')
     }

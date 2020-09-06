@@ -119,7 +119,7 @@ export default {
         amount: this.quantity
       }
 
-      this.$alert.TotasTopEnd(data.name + ' x ' + this.quantity, '已加入購物車', data.src)
+      this.$alert.totasTopEnd(data.name + ' x ' + this.quantity, '已加入購物車', data.src)
       this.$store.commit('addProduct', product)
     }
   },

@@ -207,7 +207,6 @@ export default {
     },
     remove (data) {
       this.$store.commit('removeProduct', data)
-      // this.shoppigList.splice(this.shoppigList.indexOf(data), 1)
     },
     submit () {
       if (this.user.length === 0 || this.user === undefined) {
@@ -217,32 +216,7 @@ export default {
         return
       }
 
-      this.axios
-        .post(process.env.VUE_APP_API + '/orders'
-          , {
-            products: this.order.products,
-            payment: this.order.payment,
-            remark: this.order.remark
-          },
-          { headers: { Authorization: `Bearer ${this.token}` } })
-        .then((response) => {
-          if (response.data.success) {
-            this.$alert.success(response.data.message).then(() => {
-              // 訂單送出後，把購物車清空
-              this.$store.commit('clearCart')
-              this.$router.push('order')
-            })
-          }
-        })
-        .catch((error) => {
-          if (error.response.data.message) {
-            this.$alert.error(error.response.data.message).then(() => {
-              this.$router.push('/login')
-            })
-          } else {
-            console.log(error)
-          }
-        })
+      this.$axios.postOrders(this.order.products, this.order.payment, this.order.remark)
     },
     paymentSelect (data) {
       this.payment = data

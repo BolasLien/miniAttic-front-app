@@ -12,15 +12,53 @@ Vue.use(VueAxios, axios)
 export default {
   install (Vue, options) {
     Vue.prototype.$axios = {
+      heartbeat: () => heartbeat(),
+      getWebData: () => getWebData(),
       login: (account, password) => login(account, password),
       logout: () => logout(),
       reg: (name, phone, account, password) => reg(name, phone, account, password),
-      getOrders: () => getOrders()
+      getOrders: () => getOrders(),
+      postOrders: (products, payment, remark) => postOrders(products, payment, remark),
+      getOrdersDetail: (id) => getOrdersDetail(id)
     }
   }
 }
 
 // Api
+const heartbeat = () => {
+  return axios.get(process.env.VUE_APP_API + '/heartbeat',
+    { headers: { Authorization: `Bearer ${store.getters.token}` } })
+    .then(response => {
+      if (store.getters.user.length > 0) {
+        if (response.data) {
+          alert.error('長時間未操作，自動登出').then(() => {
+          // 前端登出
+            store.commit('logout')
+            // 如果現在不是在首頁，跳到登出後的首頁
+            if (router.currentRoute.path !== '/') {
+              router.push('/')
+            }
+          })
+        }
+      }
+    })
+    .catch(error => {
+      if (error.response.status) {
+        alert.error('發生錯誤').then(() => {
+          store.commit('logout')
+          // 如果現在不是在首頁，跳到登出後的首頁
+          if (router.currentRoute.path !== '/') {
+            router.push('/')
+          }
+        })
+      }
+    })
+}
+
+const getWebData = () => {
+  return axios.get(process.env.VUE_APP_API + '/webdata')
+}
+
 const login = (account, password) => {
   return axios.post(process.env.VUE_APP_API + '/login', { account, password })
     .then(response => {
@@ -76,6 +114,33 @@ const getOrders = () => {
     })
 }
 
+const postOrders = (products, payment, remark) => {
+  return axios.post(process.env.VUE_APP_API + '/orders',
+    { products, payment, remark },
+    { headers: { Authorization: `Bearer ${store.getters.token}` } })
+    .then((response) => {
+      if (response.data.success) {
+        alert.success(response.data.message).then(() => {
+          // 訂單送出後，把購物車清空
+          store.commit('clearCart')
+          router.push('order')
+        })
+      }
+    })
+    .catch((error) => {
+      if (error.response.data.message) {
+        alert.error(error.response.data.message).then(() => {
+          router.push('/login')
+        })
+      }
+    })
+}
+
+const getOrdersDetail = (id) => {
+  return axios.get(process.env.VUE_APP_API + '/orders/' + id,
+    { headers: { Authorization: `Bearer ${store.getters.token}` } })
+}
+
 // request攔截器
 axios.interceptors.request.use(function (config) {
   // 發請求出去之前會觸發這個函式
@@ -91,6 +156,7 @@ axios.interceptors.response.use(function (response) {
   // 回來的狀態碼是2XX會觸發這個函式
   return response
 }, function (error) {
+  // 回來的狀態碼超出2XX會觸發這個函式
   const { response } = error
   if (response) {
     errorHandle(response.status, response.data.message)
@@ -99,7 +165,6 @@ axios.interceptors.response.use(function (response) {
     alert.error('請檢查網路連線')
     return Promise.reject(error)
   }
-  // 回來的狀態碼超出2XX會觸發這個函式
   // return Promise.reject(error)
 })
 

@@ -42,38 +42,10 @@ export default {
       })
     },
     heartbeat () {
-      this.axios
-        .get(process.env.VUE_APP_API + '/heartbeat',
-          { headers: { Authorization: `Bearer ${this.token}` } })
-        .then(response => {
-          const data = response.data
-
-          if (this.user.length > 0) {
-            if (!data) {
-              this.$alert.error('長時間未操作，自動登出').then(() => {
-                // 前端登出
-                this.$store.commit('logout')
-                // 如果現在不是在首頁，跳到登出後的首頁
-                if (this.$route.path !== '/') {
-                  this.$router.push('/')
-                }
-              })
-            }
-          }
-        })
-        .catch(error => {
-          this.$alert.error('發生錯誤').then(() => {
-            console.log(error)
-            this.$store.commit('logout')
-            // 如果現在不是在首頁，跳到登出後的首頁
-            if (this.$route.path !== '/') {
-              this.$router.push('/')
-            }
-          })
-        })
+      this.$axios.heartbeat()
     },
     getWebData () {
-      this.axios.get(process.env.VUE_APP_API + '/webdata')
+      this.$axios.getWebData()
         .then(response => {
           this.webdata = response.data
           this.webdata.pages.map(e => { e.src = process.env.VUE_APP_API + '/image/' + e.src })
