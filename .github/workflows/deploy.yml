@@ -9,9 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      VUE_APP_API: ${{ secrets.VUE_APP_API }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -25,9 +22,9 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: |
-          echo "VUE_APP_API=${{ secrets.VUE_APP_API }}" >> $GITHUB_ENV
-          npm run build
+        env:
+          VUE_APP_API: ${{ secrets.VUE_APP_API }}
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
