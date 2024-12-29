@@ -7,6 +7,7 @@ import router from '../router'
 import store from '../store'
 
 axios.defaults.withCredentials = true
+axios.defaults.baseURL = process.env.VUE_APP_API
 Vue.use(VueAxios, axios)
 
 export default {
@@ -26,7 +27,7 @@ export default {
 
 // Api
 const heartbeat = () => {
-  return axios.get(process.env.VUE_APP_API + '/heartbeat',
+  return axios.get('/heartbeat',
     { headers: { Authorization: `Bearer ${store.getters.token}` } })
     .then(response => {
       if (store.getters.user.length > 0) {
@@ -56,11 +57,11 @@ const heartbeat = () => {
 }
 
 const getWebData = () => {
-  return axios.get(process.env.VUE_APP_API + '/webdata')
+  return axios.get('/webdata')
 }
 
 const login = (account, password) => {
-  return axios.post(process.env.VUE_APP_API + '/login', { account, password })
+  return axios.post('/login', { account, password })
     .then(response => {
       if (response.data.success) {
       // 如果回來的資料 success 是 true
@@ -75,7 +76,7 @@ const login = (account, password) => {
 }
 
 const logout = () => {
-  return axios.delete(process.env.VUE_APP_API + '/login')
+  return axios.delete('/login')
     .then((response) => {
       alert.success(response.data.message)
         .then(() => {
@@ -89,7 +90,7 @@ const logout = () => {
 
 const reg = (name, phone, account, password) => {
   return axios.post(
-    process.env.VUE_APP_API + '/users',
+    '/users',
     { name, phone, account, password })
     .then(response => {
       if (response.data.success) {
@@ -101,7 +102,7 @@ const reg = (name, phone, account, password) => {
 }
 
 const getOrders = () => {
-  return axios.get(process.env.VUE_APP_API + '/orders',
+  return axios.get('/orders',
     { headers: { Authorization: `Bearer ${store.getters.token}` } })
     .catch((error) => {
       if (error.response.status) {
@@ -115,7 +116,7 @@ const getOrders = () => {
 }
 
 const postOrders = (products, payment, remark) => {
-  return axios.post(process.env.VUE_APP_API + '/orders',
+  return axios.post('/orders',
     { products, payment, remark },
     { headers: { Authorization: `Bearer ${store.getters.token}` } })
     .then((response) => {
@@ -137,7 +138,7 @@ const postOrders = (products, payment, remark) => {
 }
 
 const getOrdersDetail = (id) => {
-  return axios.get(process.env.VUE_APP_API + '/orders/' + id,
+  return axios.get('/orders/' + id,
     { headers: { Authorization: `Bearer ${store.getters.token}` } })
 }
 
